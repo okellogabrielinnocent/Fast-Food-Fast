@@ -140,7 +140,7 @@ label{
     }
 
 img{
-    max-width:100%;
+    display: none;
 }
 body {
     background-color: rgb(12, 44, 12);
@@ -175,9 +175,7 @@ body {
         }
 
     img{
-        height:auto;
-        max-width:80%;
-        display: flex;
+        display: none;
     }
     
     
@@ -211,8 +209,7 @@ body {
     }
 
 img{
-    height:auto;
-    max-width:80%;
+   display: none;
 }
 
 
@@ -249,8 +246,7 @@ img{
     }
 
 img{
-    height:auto;
-    max-width:100%;
+    display: none;
 }
 
 
@@ -284,8 +280,7 @@ img{
     }
 
 img{
-    height:auto;
-    max-width:100%;
+    display: none;
 }
 }
 
