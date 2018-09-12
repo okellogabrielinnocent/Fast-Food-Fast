@@ -1,6 +1,9 @@
 ## Project Overview
 Fast-Food-Fast is a food delivery service app for a restaurant.
 
+### Git pages link
+https://okellogabrielinnocent.github.io/Fast-Food-Fast/
+
 ### Required Features
 
 >  Users can create an account and log in
