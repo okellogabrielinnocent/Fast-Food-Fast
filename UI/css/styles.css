@@ -1,6 +1,6 @@
 /* Add style to the body*/
 body{
-    height: 100vh;
+    height: 100px;
     margin: 0;
     background-color:lightgrey;
 }
@@ -9,7 +9,6 @@ body{
     background-color: #54a0ff;
     color: white;
     padding:5px;
-    width:100%;
     font-family: 'Times New Roman', Times, serif;
     overflow:hidden;
     text-align: center;
@@ -42,7 +41,7 @@ body{
 /*Login form*/
 .login{
     margin-left: 1%;
-    border: solid thin lightgreen;
+    border: solid thin #576574;
     margin-top: 1px;
     background-color:white;
     width  : 640px;
@@ -68,6 +67,7 @@ form{
     position: relative;
 
 }
+
 /*Style the form title*/
 #title{
      text-align: center;
@@ -80,6 +80,56 @@ form{
     font-family: 'Times New Roman', Times, serif;
     
 }
+/* item card */
+.item-grid-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .item-grid {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  .item-grid-item {
+    width: 300px;
+    height: 300px;
+    padding: 5px
+  }
+  /* end of main items */
+
+/* item card */
+.card {
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+/* end of item card */
 
 /* Add style to the email and text boxes*/
 .login input[type=text],input[type=email]{
