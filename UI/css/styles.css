@@ -38,6 +38,11 @@ body{
     
 }
 
+.main-list{
+    margin-bottom: 20px;
+    min-height: 80vh;
+    }
+
 /*Login form*/
 .login{
     margin-left: 1%;
@@ -99,6 +104,56 @@ form{
     padding: 5px
   }
   /* end of main items */
+
+  .order-card {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    border-bottom: 1px dotted #d35400;
+  }
+  .order-content {
+      padding: 2px;
+      flex: 2;
+  }
+  .order-user {
+    flex: 1;
+  }
+
+.order-content .title {
+    font-weight: bold;
+    color: #d35400;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .decline-button .accept-button .button {
+    display: inline-block;
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: transparent;
+  }
+  .accept-button .button {
+    color: #00b894;
+    border: 1px solid #00b894;
+    padding: 3px;
+  }
+  .decline-button .button {
+    color: #d35400;
+    border: 1px solid #d35400;
+    padding: 3px;
+  }
+  .complete-button .button {
+    color: #0984e3;
+    border: 1px solid #0984e3;
+    padding: 3px;
+  }
+  a {
+    text-decoration: none;
+}
 
 /* item card */
 .card {
@@ -184,14 +239,12 @@ label{
         margin-left: 10%;
     }
 .main{
-        height: 100%;
-        width: 80%;
-        margin-left: 10%;
+    margin-bottom: 20px;
+    min-height: 80vh;
     }
 
-img{
-    display: none;
-}
+
+
 body {
     background-color: rgb(12, 44, 12);
 }
@@ -217,16 +270,12 @@ body {
             background-color: white;
             margin-left: 10%;
         }
-    .main{
-            display: flow-root;
-            height: 100%;
-            width: 80%;
-            margin-left: 10%;
-        }
+        .main{
+            margin-bottom: 20px;
+            min-height: 80vh;
+            }
 
-    img{
-        display: none;
-    }
+    
     
     
     }
@@ -251,16 +300,11 @@ body {
         background-color: white;
         margin-left: 10%;
     }
-.main{
-        display: flow-root;
-        height: 100%;
-        width: 80%;
-        margin-left: 10%;
-    }
+    .main{
+        margin-bottom: 20px;
+        min-height: 80vh;
+        }
 
-img{
-   display: none;
-}
 
 
 }
@@ -287,17 +331,12 @@ img{
     margin-left: 10%; 
       
     }
-.main{
-        display: flow-root;
-        height: 100%;
-        width: 80%;
-        margin-left: 10%;
-    
-    }
+    .main{
+        margin-bottom: 20px;
+        min-height: 80vh;
+        }
 
-img{
-    display: none;
-}
+
 
 
 }
@@ -321,17 +360,12 @@ img{
     margin-left: 10%; 
       
     }
-.main{
-        display: flow-root;
-        height: 100%;
-        width: 80%;
-        margin-left: 10%;
-    
-    }
+    .main{
+        margin-bottom: 20px;
+        min-height: 80vh;
+        }
 
-img{
-    display: none;
-}
+
 }
 
 
