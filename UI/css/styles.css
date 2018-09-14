@@ -2,7 +2,7 @@
 body{
     height: 100px;
     margin: 0;
-    background-color:lightgrey;
+    background-color:#f5f6fa;
 }
 /* Add style to the nav-bar*/
 .topnav{
@@ -53,6 +53,7 @@ body{
     height : 650px;
     margin : 0 auto;
 }
+
 /*Accept button*/
 #accept-btn{
     height: 50%;
@@ -66,6 +67,7 @@ body{
     cursor: pointer;
 }
 #accept-btn:hover {background-color: #54a0ff}
+
 /* Style the registration form*/
 form{
     margin-top: 15px;
@@ -104,7 +106,7 @@ form{
     padding: 5px
   }
   /* end of main items */
-
+  /* order card */
   .order-card {
     margin: 10px 0;
     display: flex;
@@ -120,6 +122,85 @@ form{
   .order-user {
     flex: 1;
   }
+  
+.order-button {     
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 40%;
+     
+}
+/* admin buttons */
+.complete {
+    border: 1px solid green;
+    background-color: rgb(174, 248, 176);
+}
+
+.decline {
+    border: 1px solid #d35400;
+    background-color: #F79F1F;
+}
+
+.accept {
+    border: 1px solid #d35400;
+    background-color: #0984e3;
+}
+
+/* table css */
+.table table{
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;     
+}
+
+.table th, .table td {
+   border: 1px solid #ccc;
+   padding: 10px;
+}
+
+.table tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+/* add form css */
+/* Form styles */
+
+#loginForm {
+    display:block;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+
+form {
+    display:block;    
+    margin: auto;
+}
+.form-label {
+    display:block;    
+    margin-top: 20px;
+    margin-bottom:-20px;
+}
+
+.form-submit {
+    display:block;
+    margin-top: 20px;
+}
+
+input {
+    padding:10px 20px;
+    box-sizing:border-box;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+        
+}
+input:focus {
+    outline: none;
+    border:2px solid #ff6666
+}
+
+/* order css */
 
 .order-content .title {
     font-weight: bold;
