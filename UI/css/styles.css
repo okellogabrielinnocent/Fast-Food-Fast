@@ -31,7 +31,9 @@ body{
 }
 /*Main style*/
 .main{
-    display: flex;
+    /* display: flex; */
+    
+    text-align: center;
     height: 74%;
     width: 80%;
     margin-left: 10%;
@@ -123,11 +125,13 @@ form{
     flex: 1;
   }
   
-.order-button {     
+.order-button {
+    display: flex;
+    justify-content: center;    
     padding: 5px;
     margin-right: 10px;
     border-radius: 5px;
-    width: 40%;
+    width: 50%;
      
 }
 /* admin buttons */
@@ -148,15 +152,18 @@ form{
 
 /* table css */
 .table table{
-    border: 1px solid #ccc;
     border-collapse: collapse;
     width: 100%;     
 }
 
-.table th, .table td {
+.table th {
    border: 1px solid #ccc;
    padding: 10px;
 }
+.table td {
+    border: 0px solid #ccc;
+    padding: 10px;
+ }
 
 .table tr:nth-child(even) {
     background-color: #ddd;
@@ -340,7 +347,6 @@ body {
     .topnav ul li {
             display: inline-block;
             padding: 5px 10px;
-            color: darkgreen;
         }
         
     .login{
