@@ -31,8 +31,7 @@ body{
 }
 /*Main style*/
 .main{
-    /* display: flex; */
-    
+    display: flex;
     text-align: center;
     height: 74%;
     width: 80%;
