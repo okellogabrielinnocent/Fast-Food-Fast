@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/okellogabrielinnocent/Fast-Food-Fast.svg?branch=challenge2-api)](https://travis-ci.com/okellogabrielinnocent/Fast-Food-Fast)
+
 ## Project Overview
 Fast-Food-Fast is a food delivery service app for a restaurant.
 

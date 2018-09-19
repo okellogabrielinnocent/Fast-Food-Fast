@@ -17,9 +17,19 @@ class TestBase(unittest.TestCase):
                                 data=json.dumps({}),
                                 content_type='application/json'
                                 )
-        self.assertEqual(response.status_code, 404)
-        self.assertIn(b'You have not ordered yet', response.data)
+        self.assertEqual(response.status_code, 200)
     
+    def test_make_order(self):
+        response = self.app.post('/api/v1/orders',
+                                data =json.dumps({
+                                "description":"Rice and meat",
+                                "client":"Gabriel",
+                                "location":"Kisaasi",
+                                "quantity":2, 
+                                "status":"Pending"}),
+                                content_type='application/json'
+                                )
+        self.assertEqual(response.status_code, 201)
     
     
 if __name__ == '__main__':
