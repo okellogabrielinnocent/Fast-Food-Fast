@@ -12,8 +12,39 @@ def get_all_orders():
         response = jsonify({"message":"You have not ordered yet"}) 
         response.status_code = 404
         return response
+        
     if len(orders.get_all_orders())>=1:
         order = orders.get_all_orders()
         response = jsonify({"Orders": order}) 
         response.status_code = 200 
+        return response
+    
+@app.route('/api/v1/orders', methods=['POST'])
+def make_order():
+    """
+    Add new order to order lists.
+    """
+    data = request.get_json()
+    check_order = orders.create_order(data['description'], data['client'], data['location'], data['quantity'])
+    if not check_order:
+        response =jsonify({"message": "Unable process your order"})
+        response.status_code = 400
+        return response
+
+    if check_order:
+        response= jsonify({"data": check_order})
+        response.status_code = 201
+        return response
+
+@app.route('/api/v1/orders/<order_id>')
+def get_order(order_id):
+    result = orders.get_order(order_id)
+    if not result:
+        response =jsonify({"message": "Order not avialable"})
+        response.status_code = 404
+        return response
+
+    if result:
+        response= jsonify({"Your order": result})
+        response.status_code = 200
         return response
