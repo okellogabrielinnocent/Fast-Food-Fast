@@ -36,3 +36,18 @@ def get_order(order_id):
 
     else:
         return jsonify({"Your order": result}),200
+
+@app.route('/api/v1/orders/<order_id>', methods=['PUT'])
+def put_order(order_id):
+    try:
+        data = request.get_json()
+        order_status = data['status']
+        if order_status not in ['Accepted', 'Rejected']:
+            # If order status is not valid
+            return jsonify({"message":"Bad request. Invalid order status"}), 400
+        # Valid order status
+        else:
+            return jsonify({"message": orders.put_order(order_id)}), 201
+
+    except KeyError as erro:
+        return erro
