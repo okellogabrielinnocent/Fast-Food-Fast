@@ -1,3 +1,4 @@
+from flask import jsonify, request
 from datetime import datetime
 import uuid
 
@@ -20,7 +21,7 @@ class Order:
             "location": location,
             "quantity": quantity,
             "status": "Pending",
-            "Orderd At": str(datetime.now())
+            "Orderd_At": str(datetime.now())
         }
         self.orders.append(order)
         return order
@@ -33,28 +34,18 @@ class Order:
 
     
     def get_order(self, order_id):
-        return [order for order in self.orders if order['id'] == order_id]
-    
-    def put_order(self, description, client, location, quantity):
-        """Make a New order
-        This function uses the following param: description, client, location, quantity
-        The id is passed in as uuid
-        UUID objects (universally unique identifiers) according to RFC 4122.
+        response = [order for order in self.orders if order['id'] == order_id]
+        return response
 
+    def put_order(self, order_id):
         """
-        order = {
-            "id": str(uuid.uuid1()),
-            "description": description,
-            "client": client,
-            "location": location,
-            "quantity": quantity,
-            "status": "Pending",
-            "Orderd At": str(datetime.now())
-        }
-        self.orders.put(order)
-        return order
+         method to update specific order based on the id.
+        """
+        data = request.get_json()
+        order_data = [ order for order in self.orders if (order['id'] == order_id) ]
+        order_data[0]['status'] = data['status']
 
-
-
-    def get_order(self, order_id):
-        return [order for order in self.orders if order['id'] == order_id]
+        
+        if 'client' in data : 
+            order_data[0]['client'] = data['client']
+        return order_data
