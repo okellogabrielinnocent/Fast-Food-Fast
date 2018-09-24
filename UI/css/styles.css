@@ -11,12 +11,12 @@ body{
     padding:5px;
     font-family: 'Times New Roman', Times, serif;
     overflow:hidden;
-    text-align: center;
+    text-align:center;
 }
 /* Style the menu list items in the nav-bar*/
 .topnav-list ul{
-    text-align: center;
-    margin-left: 100px;
+    text-align: right;
+    margin-right: 150px;
     margin-top: 5px;
 }
 .topnav-list li {
@@ -38,8 +38,15 @@ body{
     margin-left: 10%;
     
 }
+.table{
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    
+}
 
 .main-list{
+    padding: 15px 150px;
     margin-bottom: 20px;
     min-height: 80vh;
     }
@@ -57,6 +64,7 @@ body{
 
 /*Accept button*/
 #accept-btn{
+    /* text-align: center; */
     height: 50%;
     width: 50%;
     margin-left: 28%;
@@ -258,7 +266,7 @@ button {
     border: none;
     outline: 0;
     display: inline-block;
-    padding: 8px;
+    padding: 10px;
     color: white;
     background-color: #000;
     text-align: center;
@@ -274,7 +282,7 @@ button:hover, a:hover {
 /* end of item card */
 
 /* Add style to the email and text boxes*/
-.login input[type=text],input[type=email]{
+.login input[type=text],input[type=email],input[type=password]{
     width: 70%;
     height: auto;
     padding: 10px 10px;
@@ -282,15 +290,7 @@ button:hover, a:hover {
     margin-bottom: 5px;
     color: black;
 }
-/* Add style to the password boxes */
-.login input[type=password]{
-    width: 70%;
-    height: auto;
-    padding: 10px 10px;
-    margin-left: 10%;
-    margin-bottom: 5px;
-    color: black;
-}
+
 /*Add style to the submit button*/
 input[type=submit]{
     height: 50%;
@@ -330,11 +330,10 @@ label{
     min-height: 80vh;
     }
 
+.main-list{
+    padding: 15px 15px;
+    }
 
-
-body {
-    background-color: rgb(12, 44, 12);
-}
  }
 /* Add responsiveness for smaller tablet devices*/
 @media only screen and (min-width: 480px) and (max-width: 767px){
@@ -356,14 +355,14 @@ body {
             background-color: white;
             margin-left: 10%;
         }
-        .main{
-            margin-bottom: 20px;
-            min-height: 80vh;
-            }
+    .main{
+        margin-bottom: 20px;
+        min-height: 80vh;
+        }
 
-    
-    
-    
+    .main-list{
+        padding: 15px 15px;
+        }
     }
 /*Add responsiveness for a tablet device*/
 @media only screen and (min-width: 768px) and (max-width: 991px){
@@ -386,10 +385,14 @@ body {
         background-color: white;
         margin-left: 10%;
     }
-    .main{
-        margin-bottom: 20px;
-        min-height: 80vh;
-        }
+.main{
+    margin-bottom: 20px;
+    min-height: 80vh;
+    }
+
+.main-list{
+    padding: 15px 15px;
+    }
 
 
 
@@ -417,14 +420,13 @@ body {
     margin-left: 10%; 
       
     }
-    .main{
-        margin-bottom: 20px;
-        min-height: 80vh;
-        }
-
-
-
-
+.main{
+    margin-bottom: 20px;
+    min-height: 80vh;
+    }
+.main-list{
+    padding: 15px 15px;
+    }
 }
 @media only screen and (min-width: 1026px) and (max-width: 1084px){ 
     .topnav ul {
@@ -446,10 +448,14 @@ body {
     margin-left: 10%; 
       
     }
-    .main{
-        margin-bottom: 20px;
-        min-height: 80vh;
-        }
+.main{
+    margin-bottom: 20px;
+    min-height: 80vh;
+    }
+    
+.main-list{
+    padding: 15px 15px;
+    }
 
 
 }
