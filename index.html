@@ -3,9 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    
+  <meta name="keywords" content="okello gabriel innocent,Fast Food Fast, food ordering app">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
-    <title>Fast Food Fast</title>
+    <title>Event-Life</title>
     <link rel="stylesheet" type="text/css" href="UI/css/styles.css" />
     <link rel="icon" href="UI/images/favicon-16x16.png" type="image/gif" sizes="16x16">
 </head>
@@ -15,61 +17,30 @@
         <div class="topnav-list">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="aboutus.html">About us</a></li>
-                <li><a href="UI/login.html">Login</a></li>
             </ul>
         </div>
     </div>
 
     <div class="main">
-        <div class='item-grid-container'>
-            <!-- Item card div -->
-            <div class='item-grid'>
-                <div class='item-grid-item first-item'>
-                        <div class="card">
-                            <img src="UI/images/image.webp" alt="image" width="100%">
-                            <p>Price: 10,000</p> 
-                            <p><button>Order</button></p>
-                        </div>
-                </div>
-                <div class='item-grid-item'>
-                        <div class="card">
-                                <img src="UI/images/image.webp" alt="image" width="100%">
-                                <p>Price: 10,000</p>
-                                <p><button>Order</button></p>
-                        </div>
-                </div>
-                <div class='item-grid-item'>
-                        <div class="card">
-                                <img src="UI/images/image.webp" alt="image" width="100%">
-                                <p>Price: 10,000</p> 
-                                <p><button>Order</button></p>
-                        </div>
-                </div>
-                <div class='item-grid-item '>
-                    <div class="card">
-                            <img src="UI/images/image.webp" alt="image" width="100%" width="720">
-                            <p>Price: 10,000</p>
-                            <p><button>Order</button></p>
-                    </div>
-                </div>
-                <div class='item-grid-item '>
-                        <div class="card">
-                                <img src="UI/images/image.webp" alt="image" width="100%" width="720">
-                                <p>Price: 10,000</p>
-                                <p><button>Order</button></p>
-                        </div>
-                    </div>
-                <div class='item-grid-item last-item' >
-                    <div class="card">
-                            <img src="UI/images/image.webp" alt="image" width="100%">
-                            <p>Price: 10,000</p>
-                            <p><button>Order</button></p>
-                    </div>
-                </div>
+        <div id="image">
+            <img src="UI/images/fastfoodhome.jpg" height="650" width="720" /></div>
+        <div class="login">
+            <div id="title">
+                <h3>Fast Food Fast</h3>
             </div>
+            <form action="UI/home.html">
+                <label>Email:</label>
+                <input type="email" placeholder="name@domain.com" required />
+                <label>Password:</label>
+                <input type="password" placeholder="Password" required min="6" />
+                <input type="submit" id="accept-btn" value="Login"  />
+            </form>
+            <div id="terms"><p><small>If you donot have account <a href="UI/register.html">Register</a>
+            <div id="terms"><p><small>By submiting, you agree to the <a href="#">Terms and Conditions</a> here.</small></p></div>
+            <div id="terms"><p><small>Admin login<a href="UI/admin/login.html"> Login</a> here.</small></p></div>
         </div>
     </div>
+
 </body>
 
 </html>
