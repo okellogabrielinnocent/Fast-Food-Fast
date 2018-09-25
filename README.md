@@ -10,35 +10,18 @@ https://okellogabrielinnocent.github.io/Fast-Food-Fast/
 ### Heroku link
 https://fast-foot-fast.herokuapp.com/api/v1/orders
 
-> Post Order 
+**API end points**
 
-      {"description":"K and meat",
-      "client":"Gabriel",
-      "location":"Kisaasi",
-      "quantity":2, 
-      "status":"Rejected"}
+EndPoint | Functionality
+----------------------- | -------------
+POST /api/v1/orders|Place a new order for food.
+GET /api/v1/orders | Get a list of orders.
+GET /api/v1/orders/<order_id>|Fetch a specific order.
+PUT /api/v1/orders/<order_id>|Update the order status.
 
-### Required Features
 
->  Users can create an account and log in
 
->  A user should be able to order for food
-
->  The admin should be able to add,edit or delete the fast-food items
-
->  The admin should be able to see a list of fast-food items
-
-> The Admin user should be able to do the following:
-
-   a. See a list of orders
-
-   b. Accept and decline orders
-
-   c. Mark orders as completed
-
-> A user should be able to see a history of ordered food
-
-**Tools**
+**Tools Used**
 - Server-Side Framework: Flask Python Framework
 
 - Linting Library: Pylint, a Python Linting Library
@@ -75,3 +58,63 @@ And from the root of the folder, type:
 To run the tests and coverage, from the root folder, type: 
         
         pytest -v --cov
+
+### Required Features
+
+> Post Order https://fast-foot-fast.herokuapp.com/api/v1/orders
+
+      {"description":"K and meat",
+      "client":"Gabriel",
+      "location":"Kisaasi",
+      "quantity":2, 
+      "status":"Rejected"}
+
+>Get a list of orders https://fast-foot-fast.herokuapp.com/api/v1/orders
+
+            {
+            "Orders": [
+                  {
+                        "Orderd_At": "2018-09-25 11:49:49.338433",
+                        "client": "Gabriel",
+                        "description": "K and meat",
+                        "id": "1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc",
+                        "location": "Kisaasi",
+                        "quantity": 2,
+                        "status": "Pending"
+                  }
+            ]
+            }
+
+>Fetch a specific order.https://fast-foot-fast.herokuapp.com/api/v1/orders/1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc
+
+            {
+            "Your order": [
+                  {
+                        "Orderd_At": "2018-09-25 11:49:49.338433",
+                        "client": "Gabriel",
+                        "description": "K and meat",
+                        "id": "1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc",
+                        "location": "Kisaasi",
+                        "quantity": 2,
+                        "status": "Pending"
+                  }
+            ]
+            }
+
+
+
+>Update the order status.https://fast-foot-fast.herokuapp.com/api/v1/orders/1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc
+
+      {
+      "message": [
+            {
+                  "Orderd_At": "2018-09-25 11:49:49.338433",
+                  "client": "Gabriel",
+                  "description": "K and meat",
+                  "id": "1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc",
+                  "location": "Kisaasi",
+                  "quantity": 2,
+                  "status": "Rejected"
+            }
+      ]
+      }
