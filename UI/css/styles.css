@@ -64,10 +64,7 @@ body{
 
 /*Accept button*/
 #accept-btn{
-    /* text-align: center; */
-    height: 50%;
-    width: 50%;
-    margin-left: 28%;
+    margin-left: 10%;
     margin-top: 4%;
     margin-bottom: 5%;
     border-radius: 5px;
@@ -135,10 +132,11 @@ form{
 .order-button {
     display: flex;
     justify-content: center;    
-    padding: 5px;
+    padding: 4px;
     margin-right: 10px;
+    margin-left: 10px;
     border-radius: 5px;
-    width: 50%;
+    width: 80%;
      
 }
 /* admin buttons */
@@ -326,6 +324,7 @@ label{
         margin-left: 10%;
     }
 .main{
+    flex-direction: column;
     margin-bottom: 20px;
     min-height: 80vh;
     }
@@ -356,6 +355,8 @@ label{
             margin-left: 10%;
         }
     .main{
+        
+        flex-direction: column;
         margin-bottom: 20px;
         min-height: 80vh;
         }
@@ -386,6 +387,8 @@ label{
         margin-left: 10%;
     }
 .main{
+    
+    flex-direction: column;
     margin-bottom: 20px;
     min-height: 80vh;
     }
@@ -421,6 +424,8 @@ label{
       
     }
 .main{
+    
+    flex-direction: column;
     margin-bottom: 20px;
     min-height: 80vh;
     }
@@ -449,6 +454,8 @@ label{
       
     }
 .main{
+    
+    flex-direction: column;
     margin-bottom: 20px;
     min-height: 80vh;
     }
@@ -456,8 +463,6 @@ label{
 .main-list{
     padding: 15px 15px;
     }
-
-
 }
 
 
