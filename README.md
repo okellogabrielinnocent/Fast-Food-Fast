@@ -7,6 +7,17 @@ Fast-Food-Fast is a food delivery service app for a restaurant.
 ### Git pages link
 https://okellogabrielinnocent.github.io/Fast-Food-Fast/
 
+### Heroku link
+https://fast-foot-fast.herokuapp.com/api/v1/orders
+
+> Post Order 
+
+      {"description":"K and meat",
+      "client":"Gabriel",
+      "location":"Kisaasi",
+      "quantity":2, 
+      "status":"Rejected"}
+
 ### Required Features
 
 >  Users can create an account and log in

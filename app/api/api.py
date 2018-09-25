@@ -47,6 +47,6 @@ def put_order(order_id):
         return jsonify({"message":"Bad request. Invalid order status"}), 400
     # Valid order status
     else:
-        return jsonify({"message": orders.put_order(order_id)}), 201
+        return jsonify({"message": orders.put_order(order_id)}), 200
 
     
