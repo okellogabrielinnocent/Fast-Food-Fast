@@ -47,7 +47,7 @@ Below are the things you need to get the project up and running.
 
 **Installing the project**
 
-Type: 
+Clone: 
         
        "https://github.com/okellogabrielinnocent/Fast-Food-Fast.git"
   in the terminal or git bash or command prompt.
@@ -56,12 +56,11 @@ To install the requirements. run:
 
       pip install -r requirements.txt
 
-cd to the folder ride-my-way
+cd to the folder fasts food fast
 And from the root of the folder, type:
       
       python run.py
       
 To run the tests and coverage, from the root folder, type: 
         
-        coverage run -m pytest
-        coverage report
+        pytest -v --cov
