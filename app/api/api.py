@@ -8,16 +8,12 @@ orders = Order()
 
 @app.route('/api/v1/orders', methods=['GET'])
 def get_all_orders():
-    if len(orders.get_all_orders())==0:
-        response = jsonify({"message":"You have not ordered yet"}) 
-        response.status_code = 404
-        return response
+    order =orders.get_all_orders()
+    if len(order)==0:
+        return jsonify({"message":"You have not ordered yet"}),404
         
-    if len(orders.get_all_orders())>=1:
-        order = orders.get_all_orders()
-        response = jsonify({"Orders": order}) 
-        response.status_code = 200 
-        return response
+    else: 
+        return jsonify({"Orders": order}),200 
     
 @app.route('/api/v1/orders', methods=['POST'])
 def make_order():
@@ -27,24 +23,30 @@ def make_order():
     data = request.get_json()
     check_order = orders.create_order(data['description'], data['client'], data['location'], data['quantity'])
     if not check_order:
-        response =jsonify({"message": "Unable process your order"})
-        response.status_code = 400
-        return response
+        return jsonify({"message": "Unable process your order. Bad Request"}),400
 
-    if check_order:
-        response= jsonify({"data": check_order})
-        response.status_code = 201
-        return response
+    else:
+        return jsonify({"Order": check_order}), 201
 
-@app.route('/api/v1/orders/<order_id>')
+@app.route('/api/v1/orders/<order_id>',  methods=['GET'])
 def get_order(order_id):
     result = orders.get_order(order_id)
     if not result:
-        response =jsonify({"message": "Order not avialable"})
-        response.status_code = 404
-        return response
+        return jsonify({"message": "Order not avialable"}),404
 
-    if result:
-        response= jsonify({"Your order": result})
-        response.status_code = 200
-        return response
+    else:
+        return jsonify({"Your order": result}),200
+
+@app.route('/api/v1/orders/<order_id>', methods=['PUT'])
+def put_order(order_id):
+    
+    data = request.get_json()
+    order_status = data['status']
+    if order_status not in ['Accepted', 'Rejected']:
+        # If order status is not valid
+        return jsonify({"message":"Bad request. Invalid order status"}), 400
+    # Valid order status
+    else:
+        return jsonify({"message": orders.put_order(order_id)}), 200
+
+    
