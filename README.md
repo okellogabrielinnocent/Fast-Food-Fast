@@ -63,39 +63,44 @@ To run the tests and coverage, from the root folder, type:
 
 > Post Order https://fast-foot-fast.herokuapp.com/api/v1/orders
 
-      {"description":"K and meat",
-      "client":"Gabriel",
-      "location":"Kisaasi",
-      "quantity":2, 
-      "status":"Rejected"}
+      { "description":"Rice and Chicken",
+        "client":"Gabriel",
+        "location":"Kisaasi",
+        "price":2000,
+        "quantity":"4"
+      }
 
 >Get a list of orders https://fast-foot-fast.herokuapp.com/api/v1/orders
 
             {
             "Orders": [
                   {
-                        "Orderd_At": "2018-09-25 11:49:49.338433",
+                        "Order": {
+                        "Orderd_At": "2018-09-26 15:40:06.100573",
                         "client": "Gabriel",
-                        "description": "K and meat",
-                        "id": "1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc",
+                        "description": "Rice and Chicken",
+                        "id": "1",
                         "location": "Kisaasi",
-                        "quantity": 2,
+                        "price": 2000,
+                        "quantity": "4",
                         "status": "Pending"
+                              }
                   }
             ]
             }
 
->Fetch a specific order.https://fast-foot-fast.herokuapp.com/api/v1/orders/1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc
+>Fetch a specific order.https://fast-foot-fast.herokuapp.com/api/v1/orders/1
 
             {
             "Your order": [
                   {
-                        "Orderd_At": "2018-09-25 11:49:49.338433",
+                        "Orderd_At": "2018-09-26 15:40:06.100573",
                         "client": "Gabriel",
-                        "description": "K and meat",
-                        "id": "1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc",
+                        "description": "Rice and Chicken",
+                        "id": "1",
                         "location": "Kisaasi",
-                        "quantity": 2,
+                        "price": 2000,
+                        "quantity": "4",
                         "status": "Pending"
                   }
             ]
@@ -108,13 +113,15 @@ To run the tests and coverage, from the root folder, type:
       {
       "message": [
             {
-                  "Orderd_At": "2018-09-25 11:49:49.338433",
+                  "Orderd_At": "2018-09-26 15:40:06.100573",
                   "client": "Gabriel",
-                  "description": "K and meat",
-                  "id": "1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc",
+                  "description": "Rice and Chicken",
+                  "id": "1",
                   "location": "Kisaasi",
-                  "quantity": 2,
+                  "price": 2000,
+                  "quantity": "4",
                   "status": "Rejected"
+                  
             }
       ]
       }
