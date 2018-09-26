@@ -21,7 +21,7 @@ def make_order():
     Add new order to order lists.
     """
     data = request.get_json()
-    check_order = orders.create_order(data['description'], data['client'], data['location'], data['quantity'])
+    check_order = orders.create_order(data['description'], data['client'], data['location'],data['price'], data['quantity'])
     if not check_order:
         return jsonify({"message": "Unable process your order. Bad Request"}),400
 
@@ -42,11 +42,15 @@ def put_order(order_id):
     
     data = request.get_json()
     order_status = data['status']
+    # order_status = data['description']
     if order_status not in ['Accepted', 'Rejected']:
         # If order status is not valid
         return jsonify({"message":"Bad request. Invalid order status"}), 400
-    # Valid order status
+    elif  not 'description' and 'status'  in data:
+        error = 'Please enter correct information'
+        return error
     else:
         return jsonify({"message": orders.put_order(order_id)}), 200
+    
 
     
