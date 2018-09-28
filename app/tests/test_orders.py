@@ -22,7 +22,6 @@ class TestBase(unittest.TestCase):
                             "description": 2,
                             "id": 1,
                             "location": "Kisaasi",
-                            "price":2000,
                             "quantity": 2,
                             "status": "Pending"
                         })
@@ -32,7 +31,6 @@ class TestBase(unittest.TestCase):
                             "client": "Gabriel",
                             "description": 2,
                             "location": "Kisaasi",
-                            "price":2000,
                             "quantity": 2,
                             "status": "Pending"
                         })
@@ -40,13 +38,12 @@ class TestBase(unittest.TestCase):
     def test_get_orders(self):
         '''create order'''
         res = self.client.post('/api/v1/orders', 
-                                    data=json.dumps(dict(description="Rice and meat",
-                                                            client="Gabriel",
-                                                            location="Kisaasi",
-                                                            quantity=2,
-                                                            price =2000, 
-                                                            status="Pending")), 
-                                    content_type='application/json')
+                                data=json.dumps(dict(description="Rice and meat",
+                                                        client="Gabriel",
+                                                        location="Kisaasi",
+                                                        quantity=2, 
+                                                        status="Pending")), 
+                                content_type='application/json')
 
         self.assertEqual(res.status_code, 201)
         '''check whether orders are there'''
@@ -74,8 +71,7 @@ class TestBase(unittest.TestCase):
                                     data=json.dumps(dict(description="Rice and meat",
                                                             client="Gabriel",
                                                             location="Kisaasi",
-                                                            quantity=2,
-                                                            price= 2000, 
+                                                            quantity=2, 
                                                             status="Pending")), 
                                                             content_type='application/json')
         self.assertEqual(res.status_code, 201)
@@ -88,7 +84,6 @@ class TestBase(unittest.TestCase):
                                                 "description": "",
                                                 "id": "1",
                                                 "location": "Kisaasi",
-                                                "price": 2000,
                                                 "quantity": "4",
                                                 "status": "Pending"
                                             })
@@ -100,41 +95,56 @@ class TestBase(unittest.TestCase):
     def test_to_create_order(self):
             """test to create an order"""
 
-            res = self.client.post('/api/v1/orders', 
+            response = self.client.post('/api/v1/orders', 
                                     data=json.dumps(dict(description="Rice and meat",
                                                             client="Gabriel",
                                                             location="Kisaasi",
-                                                            quantity=2,
-                                                            price= 2000, 
+                                                            quantity=2, 
                                                             status="Pending")), 
                                                             content_type='application/json')
-            self.assertEqual(res.status_code, 201)
-            self.assertIn(b"Order", res.data)
-            self.assertIn('Gabriel', str(res.data))
+            self.assertEqual(response.status_code, 201)
+            self.assertIn(b"Order", response.data)
+            self.assertIn('Gabriel', str(response.data))
+
+    def test_to_create_order_with_empty_field(self):
+            """test to create an order with empty description"""
+
+            response = self.client.post('/api/v1/orders', 
+                                    data=json.dumps(dict(description="",
+                                                            client="Gabriel",
+                                                            location="Kisaasi",
+                                                            quantity=2, 
+                                                            status="Pending")), 
+                                                            content_type='application/json')
+            self.assertEqual(response.status_code, 400)
+            self.assertIn(b"Description should be charactor", response.data)
 
     def test_to_make_wrong_order(self):
             """test to create an order"""
 
-            res = self.client.post('/api/v1/orders', 
+            response = self.client.post('/api/v1/orders', 
                                     data="Wrong data",                                                      content_type='application/json')
-            self.assertEqual(res.status_code, 400)
-            self.assertIn(b"parameter does not exist", res.data)
+            self.assertEqual(response.status_code, 400)
+            self.assertIn(b"Please add the", response.data)
     
     def test_put_order(self):
         '''create order'''
-        res = self.client.post('/api/v1/orders', 
+        response = self.client.post('/api/v1/orders', 
                                     data=json.dumps(dict(description="Rice and meat",
                                                             client="Gabriel",
                                                             location="Kisaasi",
-                                                            quantity=2,
-                                                            price =2000, 
+                                                            quantity=2, 
                                                             status="Pending")), 
                                                             content_type='application/json')
-        self.assertEqual(res.status_code, 201)
+        self.assertEqual(response.status_code, 201)
         '''check whether order with given id is there'''
         response = self.client.put('/api/v1/orders/1',
                           content_type='application/json', 
-                                data=json.dumps({"status": "Rejected"})
+                                data=json.dumps(dict(description="Rice and meat",
+                                                            client="Gabriel",
+                                                            location="Kisaasi",
+                                                            quantity=2, 
+                                                            status= "Rejected"))
                                 )
         self.assertEqual(response.status_code, 200)                        
         self.assertIn(b'message', response.data)
@@ -146,7 +156,6 @@ class TestBase(unittest.TestCase):
                                                             client="Gabriel",
                                                             location="Kisaasi",
                                                             quantity=2,
-                                                            price =2000, 
                                                             status="Pending")), 
                                                             content_type='application/json')
         self.assertEqual(res.status_code, 201)
@@ -157,6 +166,14 @@ class TestBase(unittest.TestCase):
                                 )
         self.assertEqual(response.status_code, 400)                        
         self.assertIn(b'Bad request. Invalid order status', response.data)
+    
+    def test_page_not_found(self):
+        response = self.client.put('/api/v1/')
+        self.assertIn(b'The URL you have added is wrong', response.data)
+    
+    def test_method_not_allowed(self):
+        response = self.client.put('/api/v1/orders')
+        self.assertIn(b'The methode used is not allowed', response.data)
 
 if __name__ == '__main__':
     unittest.main()

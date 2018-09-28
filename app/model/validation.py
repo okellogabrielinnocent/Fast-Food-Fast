@@ -2,20 +2,20 @@
 import re
 
 class Validate():
-    """valiation class for diary inputs"""
+    """valiation class for order inputs"""
     def __init__(self, description, client,location, quantity):
         self.title = description
-        self.body = client
+        self.client = client
         self.location = location
         self.quantity = quantity
 
     @classmethod
-    def validate_order_fields(cls, data):
+    def validate_order_fields(cls, decription):
         """method to update other data fields"""
         result = ""
-        lst = list(data)
+        lst = list(decription)
         for char in lst:
-            if not re.search("^[a-zA-Z]", char):
+            if not re.search("[a-zA-Z]", char):
                 result = False
                 break
             else:
@@ -24,7 +24,7 @@ class Validate():
 
     @classmethod
     def validate_price_and_quantity(cls, data):
-        """method to validate"""
+        """method to validate as digits"""
         result = ""
         lst = list(data)
         for char in lst:

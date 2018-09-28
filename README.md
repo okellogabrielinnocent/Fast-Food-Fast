@@ -66,7 +66,6 @@ To run the tests and coverage, from the root folder, type:
       { "description":"Rice and Chicken",
         "client":"Gabriel",
         "location":"Kisaasi",
-        "price":2000,
         "quantity":"4"
       }
 
@@ -81,7 +80,6 @@ To run the tests and coverage, from the root folder, type:
                         "description": "Rice and Chicken",
                         "id": "1",
                         "location": "Kisaasi",
-                        "price": 2000,
                         "quantity": "4",
                         "status": "Pending"
                               }
@@ -99,7 +97,6 @@ To run the tests and coverage, from the root folder, type:
                         "description": "Rice and Chicken",
                         "id": "1",
                         "location": "Kisaasi",
-                        "price": 2000,
                         "quantity": "4",
                         "status": "Pending"
                   }
@@ -108,7 +105,7 @@ To run the tests and coverage, from the root folder, type:
 
 
 
->Update the order status.https://fast-foot-fast.herokuapp.com/api/v1/orders/1b3eceaa-c0b9-11e8-91a0-eeadc598a8cc
+>Update the order status.https://fast-foot-fast.herokuapp.com/api/v1/orders/1
 
       {
       "message": [
@@ -118,7 +115,6 @@ To run the tests and coverage, from the root folder, type:
                   "description": "Rice and Chicken",
                   "id": "1",
                   "location": "Kisaasi",
-                  "price": 2000,
                   "quantity": "4",
                   "status": "Rejected"
                   

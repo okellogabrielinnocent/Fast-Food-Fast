@@ -5,9 +5,9 @@ class Order:
     def __init__(self):
         self.orders = []
         
-    def create_order(self, description, client, location, price, quantity):
+    def create_order(self, description, client, location, quantity):
         """Make a New order
-        This function uses the following param: description, client, price,location, quantity
+        This function uses the following param: description, client, location, quantity
         The id is passed in as an auto increment id
 
         """
@@ -22,7 +22,6 @@ class Order:
             "description": description,
             "client": client,
             "location": location,
-            "price": int(price),
             "quantity": quantity,
             "status": "Pending",
             "Orderd_At": str(datetime.now())
@@ -52,4 +51,8 @@ class Order:
         data = request.get_json()
         order_data = [ order for order in self.orders if (order['id'] == order_id) ]
         order_data[0]['status'] = data['status']
+        order_data[0]['description'] = data['description']
+        order_data[0]['client'] = data['client']
+        order_data[0]['location'] = data['location']
+        order_data[0]['quantity'] = data['quantity']
         return order_data
