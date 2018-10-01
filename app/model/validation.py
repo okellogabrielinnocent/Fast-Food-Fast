@@ -1,7 +1,7 @@
-"""validation class with regular expressions"""
 import re
-
 class Validate():
+    """validation class with regular expressions"""
+    
     """valiation class for order inputs"""
     def __init__(self, description, client,location, quantity):
         self.title = description

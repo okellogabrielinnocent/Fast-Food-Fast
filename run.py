@@ -1,5 +1,8 @@
-from app.api.api import app
+from app import App
 
 if __name__ == '__main__':
-     app.run(debug=True)
-
+    """calls flask App object
+    Runs this file as the fast module
+    Auto reloads when app is run
+    """
+    App.run(debug=True)

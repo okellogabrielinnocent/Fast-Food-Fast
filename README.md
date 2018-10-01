@@ -13,12 +13,17 @@ https://fast-foot-fast.herokuapp.com/api/v1/orders
 
 **API end points**
 
-EndPoint | Functionality
------------------------ | -------------
-POST /api/v1/orders|Place a new order for food.
-GET /api/v1/orders | Get a list of orders.
-GET /api/v1/orders/<order_id>|Fetch a specific order.
-PUT /api/v1/orders/<order_id>|Update the order status.
+EndPoint|Functionality|Note
+------|-------|------
+POST /auth/signup |Register a user|
+POST /auth/login|Login a user|
+POST /users/orders|Place an order for food.|
+GET /users/orders|Get the order history for a particular user.|
+GET /orders/|Get all orders|Only Admin (caterer) should have access to this route
+GET /orders/<orderId>|Fetch a specific order|Only Admin (caterer) should have access to this route
+PUT /orders/<orderId>|Update the status  of an order|Only Admin (caterer) should have access to this route. The Status  of an order could either be New, Processing, Cancelled or Complete.
+GET /menu|Get available menu|
+POST /menu|Add a meal option to the menu.|Only Admin (caterer) should have access to this route
 
 
 
@@ -38,6 +43,7 @@ Below are the things you need to get the project up and running.
 - git : To update and clone the repository
 - python3: Language used to develop the api
 - pip: A python package used to install project requirements specified in the requirements text file.
+- Database: PostgreSQL
 
 
 **Installing the project**
@@ -62,63 +68,18 @@ To run the tests and coverage, from the root folder, type:
 
 ### Required Features
 
-> Post Order https://fast-foot-fast.herokuapp.com/api/v1/orders
+>Create user accounts that can signin/signout from the app.
 
-      { "description":"Rice and Chicken",
-        "client":"Gabriel",
-        "location":"Kisaasi",
-        "quantity":"4"
-      }
+>Place an order for food.
 
->Get a list of orders https://fast-foot-fast.herokuapp.com/api/v1/orders
+>Get list of orders.
 
-            {
-            "Orders": [
-                  {
-                        "Order": {
-                        "Orderd_At": "2018-09-26 15:40:06.100573",
-                        "client": "Gabriel",
-                        "description": "Rice and Chicken",
-                        "id": "1",
-                        "location": "Kisaasi",
-                        "quantity": "4",
-                        "status": "Pending"
-                              }
-                  }
-            ]
-            }
+>Get a specific order.
 
->Fetch a specific order.https://fast-foot-fast.herokuapp.com/api/v1/orders/1
+>Update the status of an order.
 
-            {
-            "Your order": [
-                  {
-                        "Orderd_At": "2018-09-26 15:40:06.100573",
-                        "client": "Gabriel",
-                        "description": "Rice and Chicken",
-                        "id": "1",
-                        "location": "Kisaasi",
-                        "quantity": "4",
-                        "status": "Pending"
-                  }
-            ]
-            }
+>Get the menu.
 
+>Add food option to the menu.
 
-
->Update the order status.https://fast-foot-fast.herokuapp.com/api/v1/orders/1
-
-      {
-      "message": [
-            {
-                  "Orderd_At": "2018-09-26 15:40:06.100573",
-                  "client": "Gabriel",
-                  "description": "Rice and Chicken",
-                  "id": "1",
-                  "location": "Kisaasi",
-                  "quantity": "4",
-                  "status": "Rejected"
-                  
-            }
-      ]
-      }
+>View the order history  for a particular user.
