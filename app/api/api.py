@@ -24,3 +24,18 @@ def create_user():
         return result
     except Exception as err:
         return jsonify({"message": "The {} parameter does not exist".format(str(err))}), 400
+
+@ROUTES.route('/API/v1/auth/login', methods=['POST'])
+def login():
+    try:
+        data = request.get_json()
+        # info = Validate.validate_login(data["username"], data["password"])
+        # if info is True:
+        obj = User()
+        info = obj.login(data["username"], data["password"])
+        return info
+        # else:
+        #     return jsonify({"message": """Bad username or empty password field"""}), 400
+
+    except:
+        return jsonify({"Error": "Should have a username field taking in a string and password field taking in a string"}), 400

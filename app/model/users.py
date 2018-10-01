@@ -34,7 +34,7 @@ class User(Database):
                 response = jsonify({"message": "User registeration successfuly"}), 201
             return response
         except Exception as err:
-            return jsonify({"message": "The {} is problem".format(str(err))}), 400
+            return jsonify({"Message": "The {} is problem".format(str(err))}), 400
 
 
     def login(self, username, password):
@@ -46,23 +46,23 @@ class User(Database):
                         password = %s""", (username, password))
             self.con.commit()
             count = cur.rowcount
-            result = cur.fetchone()
+            data = cur.fetchone()
             if count > 0:
                 '''Lets user create access token 
                 for a user login to acces resources
                 '''
 
                 expires = datetime.timedelta(days=1)
-                user = dict(user_id=result[0], address=result[1],
-                                     email=result[2], contact=result[3])
+                user = dict(user_id=data[0], username=data[1],
+                                    password=data[2], address=data[3],
+                                    email=data[4],admin=data[5])
                 access_token = create_access_token(identity=user,
                                                    expires_delta=expires)
-                response = jsonify({"message": "Login successful",
-                                    "token": access_token})
+                response = jsonify({"Message": "Login successful",
+                                    "Token": access_token})
                 response.status_code = 200
             else:
-                response = jsonify({"message": "Invalid username or password"})
-                response.status_code = 403
+                response = jsonify({"Message": "Username or password is not valid"}), 404
             return response
         except:
             return jsonify({"message": "User login failed"})
