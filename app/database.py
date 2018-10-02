@@ -14,18 +14,23 @@ class Database:
                                         password="moschinogab19", dbname="fastfoodfast")
             cur = self.con.cursor()
             cur.execute(tables.USER,)
-            # cur.execute(tables.FOODITEM,)
-            # cur.execute(tables.MENU,)
+            cur.execute(tables.FOODITEM,)
+            cur.execute(tables.MENU,)
+            cur.execute(tables.ORDER,)
             self.con.commit()
 
         else:
             self.con = psycopg2.connect(host="localhost", user="postgres",
                                         password="moschinogab19", dbname="test_db")
             cur = self.con.cursor()
+            cur = self.con.cursor()
             cur.execute(tables.USER,)
+            cur.execute(tables.FOODITEM,)
+            cur.execute(tables.MENU,)
+            cur.execute(tables.ORDER,)
             self.con.commit()
             today = str(date.today())
-            cur.execute("""INSERT INTO user(username, password, address,
+            cur.execute("""INSERT INTO users(username, password, address,
                             email, admin)
             VALUES ("okello";"moschinogab";"kisaasi";"okellogabrielinnocent@gmail.com";TRUE)""")
             self.con.commit()
