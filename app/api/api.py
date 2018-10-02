@@ -134,3 +134,23 @@ def get_orders():
     except Exception as err:
         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
         return response
+
+@ROUTES.route('/API/v1/orders', methods=['GET'])
+@jwt_required
+def get_all_orders():
+    """ Getting orders
+    calls the create_order and check_if_order_exist function in models.py
+    """
+      
+    try:
+        data = request.get_json()
+        token_owner = get_jwt_identity()
+        data["user_userid"] = token_owner["user_id"]
+        if data["user_userid"] is not 'True':
+            return jsonify({"UNAUTHORIZED Access. Only admin is allowed"}), 401
+        result = orders.get_order_list()
+        return jsonify({"Orders": result}), 200
+
+    except Exception as err:
+        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
+        return response
