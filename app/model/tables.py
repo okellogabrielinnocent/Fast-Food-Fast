@@ -11,17 +11,17 @@ USER = """CREATE TABLE IF NOT EXISTS users (
   PRIMARY KEY (userid))"""
 
 
-# FOODITEM = """CREATE TABLE IF NOT EXISTS food_item (
-#   itemid SERIAL NOT NULL,
-#   description VARCHAR(45) NULL,
-#   price INT NULL,
-#   user_userid INT NOT NULL,
-#   PRIMARY KEY (itemid),
-#   CONSTRAINT fk_food_item_user1
-#     FOREIGN KEY (user_userid)
-#     REFERENCES user (userid)
-#     ON DELETE NO ACTION
-#     ON UPDATE NO ACTION)"""
+FOODITEM = """CREATE TABLE IF NOT EXISTS food_item (
+  itemid SERIAL NOT NULL,
+  description VARCHAR(45) NULL,
+  price INT NULL,
+  user_userid INT NOT NULL,
+  PRIMARY KEY (itemid),
+  CONSTRAINT fk_food_item_user1
+    FOREIGN KEY (user_userid)
+    REFERENCES users (userid)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)"""
 
 
 MENU ="""CREATE TABLE IF NOT EXISTS menu (
@@ -33,22 +33,18 @@ MENU ="""CREATE TABLE IF NOT EXISTS menu (
     FOREIGN KEY (food_item_itemid)
     REFERENCES food_item (itemid))"""
 
+# CREATE TYPE order_status AS ENUM ('Accepted', 'Rejected', 'Pending');
 
-
-ORDER = """CREATE TABLE IF NOT EXISTS order (
+ORDER = """CREATE TABLE IF NOT EXISTS orders (
   orderid SERIAL NOT NULL,
-  status ENUM('Accepted', 'Rejected', 'Pending') NULL,
-  date DATETIME NULL,
+  date VARCHAR(45) NULL,
   menu_menuid INT NOT NULL,
   user_userid INT NOT NULL,
   PRIMARY KEY (orderid),
-  INDEX fk_order_menu_idx (menu_menuid ASC),
-  INDEX fk_order_user1_idx (user_userid ASC),
   CONSTRAINT fk_order_menu
     FOREIGN KEY (menu_menuid)
     REFERENCES menu (menuid)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE NO ACTION,
   CONSTRAINT fk_order_user1
     FOREIGN KEY (user_userid)
-    REFERENCES user (userid))"""
+    REFERENCES users (userid))"""
