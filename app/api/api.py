@@ -89,3 +89,48 @@ def get_avialable_menu():
         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
         return response
     
+@ROUTES.route('/API/v1/users/orders', methods=['POST'])
+def place_order():
+    """ Placing order
+    calls the create_order and check_if_order_exist function in models.py
+    """
+      
+    try:
+        today = str(date.today())
+        data = request.get_json()
+        data['date'] = today
+        orderid = request.json['orderid']
+        user_userid = request.json['user_userid']
+        description = request.json['description']
+        menu_menuid = request.json['menu_menuid']
+
+        if not re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", description):
+            return jsonify({"message":"Input fields should not be empty"}), 404
+
+        if orders.check_if_order_exist(orderid, data['date'],menu_menuid, user_userid) is True:
+            return jsonify({"message": "Order is already existing"}), 409
+
+        orders.create_order(data['date'],menu_menuid, user_userid)
+        return jsonify({"message": "Order placed successfuly"}), 201
+        
+    except Exception as err:
+        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
+        return response
+
+@ROUTES.route('/API/v1/users/orders', methods=['GET'])
+@jwt_required
+def get_orders():
+    """ Getting orders for a particular user
+    calls the create_order and check_if_order_exist function in models.py
+    """
+      
+    try:
+        data = request.get_json()
+        token_owner = get_jwt_identity()
+        data["user_userid"] = token_owner["user_id"]
+        result = orders.get_order_list()
+        return jsonify({"Orders": result}), 200
+
+    except Exception as err:
+        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
+        return response
