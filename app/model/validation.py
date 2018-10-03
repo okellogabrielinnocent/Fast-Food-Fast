@@ -1,36 +1,34 @@
 import re
-class Validate():
+class Validations():
     """validation class with regular expressions"""
     
     """valiation class for order inputs"""
-    def __init__(self, description, client,location, quantity):
-        self.title = description
+    def __init__(self, description, client,price, quantity):
+        self.description = description
         self.client = client
-        self.location = location
+        self.price = price
         self.quantity = quantity
+    
+    
+    def validate_empty(self):
+        """method to validate my input """
+        
+        empty = re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", self.description)
+        if not empty:
+            return False
+        elif not re.search("[a-zA-Z]", self.description):
+            return False
+        else:
+            return True
 
     @classmethod
-    def validate_order_fields(cls, decription):
+    def validate_order_fields(cls, data):
         """method to update other data fields"""
-        result = ""
-        lst = list(decription)
-        for char in lst:
-            if not re.search("[a-zA-Z]", char):
-                result = False
-                break
-            else:
-                result = True
-        return result
+        if not re.search("[a-zA-Z]", data):
+            return False
 
     @classmethod
-    def validate_price_and_quantity(cls, data):
+    def validate_price(cls, data):
         """method to validate as digits"""
-        result = ""
-        lst = list(data)
-        for char in lst:
-            if not re.search("[0-9]", char):
-                result = False
-                break    
-            else:
-                result = True
-        return result
+        if not re.search("[0-9]", data):
+                return False

@@ -15,7 +15,6 @@ class Database:
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
-            cur.execute(tables.MENU,)
             cur.execute(tables.ORDER,)
             self.con.commit()
 
@@ -26,7 +25,6 @@ class Database:
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
-            cur.execute(tables.MENU,)
             cur.execute(tables.ORDER,)
             self.con.commit()
             today = str(date.today())
@@ -37,6 +35,6 @@ class Database:
             cur = self.con.cursor()
             cur.execute(tables.ORDER,)
             self.con.commit()
-            cur.execute("""INSERT INTO Order(, user_id)VALUES('', %s,
-                        )""", (today, ))
-            self.con.commit()
+            # cur.execute("""INSERT INTO Order(, user_id)VALUES('', %s,
+            #             )""", (today, ))
+            # self.con.commit()

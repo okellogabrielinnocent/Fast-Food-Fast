@@ -15,29 +15,27 @@ class User(Database):
     def sign_up(self, username, password, address,
                 email, admin):
         """method for creating a user"""
-        try:
-            """method for checking whether user is avialable"""
-            response = ""
-            cur = self.con.cursor()
-            cur.execute("""SELECT username FROM Users where
-                        username =%s """, (username, ))
-            self.con.commit()
-            result = cur.rowcount
-            if result > 0:
-                response = jsonify({"message": "Username is already existing"}), 409
-            else:
-                cur.execute("""INSERT INTO users(username, password, address,
-                            email, admin)VALUES (%s, %s, %s, %s, False)""",
-                            (username, password, address,
-                            email))
+        
+        cur = self.con.cursor()
+        cur.execute("""INSERT INTO users(username, password, address,
+                    email, admin)VALUES (%s, %s, %s, %s, False)""",
+                    (username, password, address,
+                    email))
+        self.con.commit()
+
+    def validate_user_duplicate(self,username, password, address,
+                email, admin):
+                cur = self.con.cursor()
+                cur.execute("""SELECT username FROM Users where
+                            username =%s """, (username, ))
                 self.con.commit()
-                response = jsonify({"message": "User registeration successfuly"}), 201
-            return response
-        except Exception as err:
-            return jsonify({"Message": "The {} is problem".format(str(err))}), 400
-
-
-    def login(self, username, password):
+                result = cur.rowcount
+                if result > 0:
+                    return True
+                else:
+                    False
+                    
+    def user_login(self, username, password):
         """method for loging in a user"""
         try:
             response = ""
@@ -47,15 +45,15 @@ class User(Database):
             self.con.commit()
             count = cur.rowcount
             data = cur.fetchone()
+            
             if count > 0:
                 '''Lets user create access token 
                 for a user login to acces resources
                 '''
 
                 expires = datetime.timedelta(days=1)
-                user = dict(user_id=data[0], username=data[1],
-                                    password=data[2], address=data[3],
-                                    email=data[4],admin=data[5])
+                user = dict(userid=data[0], username=data[1],
+                                    password=data[2], admin=data[3])
                 access_token = create_access_token(identity=user,
                                                    expires_delta=expires)
                 response = jsonify({"Message": "Login successful",

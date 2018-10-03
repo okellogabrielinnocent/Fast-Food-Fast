@@ -4,6 +4,9 @@ python:
   - "3.6"
 cache: pip
 
+services:
+- postgresql
+
 install:
   - pip install -r requirements.txt
 before_script:
@@ -11,6 +14,6 @@ before_script:
   - psql -c "CREATE DATABASE test_db;" -U postgres
   
 script:
-  - pytest --cov=App
+  - pytest -v --cov=app
 after_success:
   - coveralls
