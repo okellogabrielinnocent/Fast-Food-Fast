@@ -5,6 +5,7 @@ from app.model.order import Orders
 from app.model.users import User
 from app.model.validation import Validations
 from datetime import datetime
+from flasgger import Swagger, swag_from
 import re
 
 
@@ -14,6 +15,7 @@ orders = Orders()
 validations = Validations
 
 @ROUTES.route('/API/v1/auth/user/signup', methods=['POST'])
+@swag_from('../Docs/signup.yml')
 def create_user():
     """ Creating a user account
     calls the signup() function in models.py
@@ -41,6 +43,7 @@ def create_user():
         return jsonify({"message": "The {} field is missing".format(str(err))}), 400
 
 @ROUTES.route('/API/v1/auth/login', methods=['POST'])
+@swag_from('../Docs/login.yml')
 def login():
 
     try:
@@ -50,33 +53,6 @@ def login():
     except Exception as err:
         return jsonify({"message": "The {} field is missing".format(str(err))}), 400
 
-# @ROUTES.route('/API/v1/menu', methods=['POST'])
-# @jwt_required
-# def add_item_to_menu():
-#     """ Creating a user account
-#     calls the signup() function in models.py
-#     """
-      
-#     try:
-#         data = request.get_json()
-#         token_owner = get_jwt_identity()
-#         '''This line get userid from token'''
-#         data["user_userid"] = token_owner["user_id"]
-#         description = request.json['description']
-#         price = request.json['price']
-
-#         if not re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", description, price):
-#             return jsonify({"message":"Input fields should not be empty"}), 400
-
-#         if orders.validate_item_creation(description, price, data["user_userid"]) is True:
-#             return jsonify({"message": "Item already existing"}), 409
-
-#         orders.create_item(description, price, data["user_userid"])
-#         return jsonify({"message": "Item created successfuly"},data), 201
-        
-#     except Exception as err:
-#         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
-#         return response
 @ROUTES.route('/API/v1/menu', methods=['POST'])
 @jwt_required
 def add_item_to_menu():

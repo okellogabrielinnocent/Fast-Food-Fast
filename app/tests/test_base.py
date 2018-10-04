@@ -31,7 +31,7 @@ class TestBase(unittest.TestCase):
     login_wrong_credentials = (dict(username="okello", password="Gabriel"))
 
     """Test cases for creating food items and orders"""
-    create_food_item = json.dumps(dict(description="kCasavat mashed source",
+    create_food_item = json.dumps(dict(description="ksavat mashed source",
 	                            price=2000, user_id =1 ))
     
     create_duplicate_food_item = json.dumps(dict(description="Casava mashed source",
@@ -41,8 +41,8 @@ class TestBase(unittest.TestCase):
     create_food_item_with_missing_field = json.dumps(dict(price=2000, user_id =1 ))
 
     get_food_items = json.dumps(dict())
-    get_food_item_missing_fields = json.dumps(dict())
-    place_order = json.dumps(dict())
+    place_order = json.dumps(dict(food_item_itemid=1,
+	                                quantity=4))
     place_order_with_no_itemid = json.dumps(dict())
 
 

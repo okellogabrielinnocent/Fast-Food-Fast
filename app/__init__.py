@@ -1,9 +1,11 @@
 from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
+from flasgger import Swagger
 
 App = Flask(__name__)
 App.config['JWT_SECRET_KEY'] = 'innocorp'
 jwt = JWTManager(App)
+Swagger(App)
 '''JWT MAnager
 An object used to hold JWT settings and callback functions
 for the Flask-JWT-Extended extension.'''

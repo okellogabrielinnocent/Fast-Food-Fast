@@ -53,22 +53,22 @@ class TestOrders(TestBase):
             self.assertEqual(response.status_code, 200)
             self.assertIn(b"Avialable menu", response.data)
             
-    # def test_place_order(self):
-    #         """test placing order by user """
+    def test_place_order(self):
+            """test placing order by user """
             
-    #         response = self.client.post('/API/v1/users/orders',
-    #                             data=TestBase.place_order,
-    #                                 headers=self.access_header,
-    #                             content_type="application/json")
-    #         self.assertEqual(response.status_code, 200)
-    #         self.assertIn(b"Order placed successfuly", response.data)
+            response = self.client.post('/API/v1/users/orders',
+                                data=TestBase.place_order,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 201)
+            self.assertIn(b"Order placed successfuly", response.data)
 
-    # def test_place_order_with_no_itemid(self):
-    #         """test placing order by user """
+    def test_place_order_with_no_itemid(self):
+            """test placing order by user without fields"""
             
-    #         response = self.client.post('/API/v1/users/orders',
-    #                             data=TestBase.place_order_with_no_itemid,
-    #                                 headers=self.access_header,
-    #                             content_type="application/json")
-    #         self.assertEqual(response.status_code, 400)
-    #         self.assertIn(b"parameter does not exist", response.data)    
+            response = self.client.post('/API/v1/users/orders',
+                                data=TestBase.place_order_with_no_itemid,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 400)
+            self.assertIn(b"parameter does not exist", response.data)    

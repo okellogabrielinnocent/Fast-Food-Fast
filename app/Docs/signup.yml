@@ -1,0 +1,33 @@
+This demos user signup
+---
+tags:
+- User Authentication
+parameters:
+ - in: body
+   name: Body
+   required: true
+   type: string
+   description: This route is used to register a new user. 
+responses:
+ 201:
+   description: User registered successfuly
+   schema:
+     id: register
+     properties:
+        username:
+          type: string
+          default: Gabriel
+        email:
+          type: string
+          default: okellogabrielinnocent@gmail.com
+        password:
+          type: string
+          default: gabriel
+        address:
+          type: string
+          default: Kisaasia
+        admin:
+         type: boolean
+         default: False
+ 400:
+   description: Required field/s Missing

@@ -1,0 +1,28 @@
+This demos user signup
+---
+tags:
+- User Authentication
+parameters:
+ - in: Usename
+   name: username
+   required: true
+   type: string
+ - in: Password
+   name: password
+   required: true
+   type: string 
+   description: This route is used to login user. 
+responses:
+ 200:
+   description: Login successful
+   schema:
+     id: Login
+     properties:
+        username:
+          type: string
+          default: Gabriel        
+        password:
+          type: string
+          default: gabriel
+ 400:
+   description: Required field/s Missing
