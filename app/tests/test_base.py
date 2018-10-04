@@ -26,7 +26,7 @@ class TestBase(unittest.TestCase):
     missing_username_field = json.dumps(dict(admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))                                    
-    user_login = json.dumps(dict(username="innocent", password="Gabriel"))
+    user_login = json.dumps(dict(username="Gabriel", password="Gabriel"))
     missing_login_fields = json.dumps(dict())
     login_wrong_credentials = (dict(username="okello", password="Gabriel"))
 

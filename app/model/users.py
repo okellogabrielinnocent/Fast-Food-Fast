@@ -34,6 +34,17 @@ class User(Database):
                     return True
                 else:
                     False
+
+    def get_admin_role(self,admin):
+                cur = self.con.cursor()
+                cur.execute("""SELECT admin FROM users where
+                            admin = True """, (admin, ))
+                self.con.commit()
+                result = cur.rowcount
+                if result > 0:
+                    return True
+                else:
+                    False
                     
     def user_login(self, username, password):
         """method for loging in a user"""

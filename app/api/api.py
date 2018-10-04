@@ -1,11 +1,12 @@
 """api views"""
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity,create_access_token
+from flask_jwt_extended import (jwt_required, get_jwt_identity,
+create_access_token,get_jwt_claims)
 from app.model.order import Orders
 from app.model.users import User
 from app.model.validation import Validations
 from datetime import datetime
-from flasgger import Swagger, swag_from
+# from flasgger import Swagger, swag_from
 import re
 
 
@@ -14,18 +15,19 @@ users = User()
 orders = Orders()
 validations = Validations
 
+
 @ROUTES.route('/API/v1/auth/user/signup', methods=['POST'])
-@swag_from('../Docs/signup.yml')
+# @swag_from('../Docs/signup.yml')
 def create_user():
     """ Creating a user account
     calls the signup() function in models.py
     """    
     try:
-        email = request.json['email']
+        email = request.json['email'].strip()
         admin = request.json['admin']
-        username = request.json['username']
-        address = request.json['address']
-        password = request.json['password']
+        username = request.json['username'].strip()
+        address = request.json['address'].strip()
+        password = request.json['password'].strip()
 
         if not re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", username):
             return jsonify({"message":"Username can not be empty"}), 400
@@ -43,7 +45,7 @@ def create_user():
         return jsonify({"message": "The {} field is missing".format(str(err))}), 400
 
 @ROUTES.route('/API/v1/auth/login', methods=['POST'])
-@swag_from('../Docs/login.yml')
+# @swag_from('../Docs/login.yml')
 def login():
 
     try:
