@@ -5,15 +5,17 @@ from app import App
 from app.model import tables
 from config import TestingConfig, DevelopmentConfig
 App.config.from_object(TestingConfig)
-App.config['DEBUG']
+
 
 class Database:
     """class with database configurtions"""
 
     def __init__(self):
-        if not App.config['TESTING']:
-            self.con = psycopg2.connect(host="localhost", user="postgres",
-                                        password="moschinogab19", dbname="fastfoodfast")
+        
+                        
+        if not App.config.from_object(TestingConfig):            
+            self.con = psycopg2.connect(host="ec2-23-21-171-249.compute-1.amazonaws.com", user="txulbvjcwlqbtl",
+                                        password="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e", dbname="d1c60svhtc6rcrcls")
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
@@ -21,13 +23,11 @@ class Database:
             self.con.commit()
 
         else:
+            print("====Tetsts Run===",App.config['TESTING'])
             self.con = psycopg2.connect(host="localhost", user="postgres",
                                         password="moschinogab19", dbname="test_db")
             cur = self.con.cursor()
             cur.execute(tables.USER,)
-            cur =self.con.commit()
-            cur = self.con.cursor()
             cur.execute(tables.FOODITEM,)
-            self.con.commit()
-            cur = self.con.cursor()
             cur.execute(tables.ORDER,)
+            self.con.commit()

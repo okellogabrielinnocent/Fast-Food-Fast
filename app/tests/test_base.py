@@ -47,7 +47,6 @@ class TestBase(unittest.TestCase):
 
 
     def setUp(self):
-        App.config['TESTING'] = True
         self.client = App.test_client()
         with App.test_request_context():
             self.loggedin_user1 = dict(user_id=1, username='Gabriel',
@@ -55,12 +54,6 @@ class TestBase(unittest.TestCase):
             self.access_token = create_access_token(self.loggedin_user1)
             self.access_header = {'Authorization': 'Bearer {}'.format(
                 self.access_token)}
-        # with App.test_request_context():
-        #     self.loggedin_user2 = dict(userid=2, username='gabriel',
-        #                               password='Gabriel', Admin='True')
-        #     self.access_token = create_access_token(self.loggedin_user2)
-        #     self.access_header = {'Authorization': 'Bearer {}'.format(
-        #         self.access_token)}
 
     def tearDown(self):
         users= ("""DROP TABLE IF EXISTS users CASCADE;""")
