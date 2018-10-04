@@ -52,7 +52,7 @@ class User(Database):
                 '''
 
                 expires = datetime.timedelta(days=1)
-                user = dict(userid=data[0], username=data[1],
+                user = dict(user_id=data[0], username=data[1],
                                     password=data[2], admin=data[3])
                 access_token = create_access_token(identity=user,
                                                    expires_delta=expires)

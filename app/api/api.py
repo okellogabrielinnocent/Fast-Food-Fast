@@ -50,6 +50,33 @@ def login():
     except Exception as err:
         return jsonify({"message": "The {} field is missing".format(str(err))}), 400
 
+# @ROUTES.route('/API/v1/menu', methods=['POST'])
+# @jwt_required
+# def add_item_to_menu():
+#     """ Creating a user account
+#     calls the signup() function in models.py
+#     """
+      
+#     try:
+#         data = request.get_json()
+#         token_owner = get_jwt_identity()
+#         '''This line get userid from token'''
+#         data["user_userid"] = token_owner["user_id"]
+#         description = request.json['description']
+#         price = request.json['price']
+
+#         if not re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", description, price):
+#             return jsonify({"message":"Input fields should not be empty"}), 400
+
+#         if orders.validate_item_creation(description, price, data["user_userid"]) is True:
+#             return jsonify({"message": "Item already existing"}), 409
+
+#         orders.create_item(description, price, data["user_userid"])
+#         return jsonify({"message": "Item created successfuly"},data), 201
+        
+#     except Exception as err:
+#         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
+#         return response
 @ROUTES.route('/API/v1/menu', methods=['POST'])
 @jwt_required
 def add_item_to_menu():
@@ -66,7 +93,7 @@ def add_item_to_menu():
         price = request.json['price']
 
         if not re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", description, price):
-            return jsonify({"message":"Input fields should not be empty"}), 404
+            return jsonify({"message":"Input fields should not be empty"}), 400
 
         if orders.validate_item_creation(description, price, data["user_userid"]) is True:
             return jsonify({"message": "Item already existing"}), 409
@@ -162,7 +189,7 @@ def get_order_by_id(orderid):
         return jsonify({"Your order": result}), 200
         
     except:
-        return jsonify({"Message": "The order with order id {} does not exist".format(orderid)}), 400
+        return jsonify({"Message": "The order with order id {} does not exist".format(orderid)}), 404
 
 
 @ROUTES.route('/API/v1/orders/<orderid>',methods=['PUT'])
@@ -178,6 +205,5 @@ def update_orders(orderid):
         return jsonify({"message": "Order updated successfuly"}), 200
         
     except Exception as err:
-        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
+        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 404
         return response
-    

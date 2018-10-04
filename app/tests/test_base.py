@@ -26,19 +26,41 @@ class TestBase(unittest.TestCase):
     missing_username_field = json.dumps(dict(admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))                                    
-    user_login = json.dumps(dict(username="Gabriel", password="Gabriel"))
+    user_login = json.dumps(dict(username="innocent", password="Gabriel"))
     missing_login_fields = json.dumps(dict())
     login_wrong_credentials = (dict(username="okello", password="Gabriel"))
+
+    """Test cases for creating food items and orders"""
+    create_food_item = json.dumps(dict(description="kCasavat mashed source",
+	                            price=2000, user_id =1 ))
+    
+    create_duplicate_food_item = json.dumps(dict(description="Casava mashed source",
+	                            price=2000, user_id =1 ))
+    create_food_item_with_empty_data = json.dumps(dict(description=" ",
+	                            price=2000, user_id =1 ))
+    create_food_item_with_missing_field = json.dumps(dict(price=2000, user_id =1 ))
+
+    get_food_items = json.dumps(dict())
+    get_food_item_missing_fields = json.dumps(dict())
+    place_order = json.dumps(dict())
+    place_order_with_no_itemid = json.dumps(dict())
+
 
     def setUp(self):
         App.config['TESTING'] = True
         self.client = App.test_client()
         with App.test_request_context():
-            self.loggedin_user = dict(userid=1, username='Gabriel',
+            self.loggedin_user1 = dict(user_id=1, username='Gabriel',
                                       password='Gabriel', Admin='False')
-            self.access_token = create_access_token(self.loggedin_user)
+            self.access_token = create_access_token(self.loggedin_user1)
             self.access_header = {'Authorization': 'Bearer {}'.format(
                 self.access_token)}
+        # with App.test_request_context():
+        #     self.loggedin_user2 = dict(userid=2, username='gabriel',
+        #                               password='Gabriel', Admin='True')
+        #     self.access_token = create_access_token(self.loggedin_user2)
+        #     self.access_header = {'Authorization': 'Bearer {}'.format(
+        #         self.access_token)}
 
     def tearDown(self):
         users= ("""DROP TABLE IF EXISTS users CASCADE;""")
