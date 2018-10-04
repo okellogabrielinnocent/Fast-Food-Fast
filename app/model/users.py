@@ -63,4 +63,4 @@ class User(Database):
                 response = jsonify({"Message": "Username or password is not valid"}), 404
             return response
         except:
-            return jsonify({"message": "User login failed"})
+            return False

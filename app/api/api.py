@@ -26,9 +26,9 @@ def create_user():
         password = request.json['password']
 
         if not re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", username):
-            return jsonify({"message":"Username can not be empty"}), 404
+            return jsonify({"message":"Username can not be empty"}), 400
         if  re.search("[0-9]", username):
-            return jsonify({"message":"Username can not numbers"}), 404
+            return jsonify({"message":"Username can not numbers"}), 400
         
         if users.validate_user_duplicate(username, password, address,
                 email, admin) is True:
@@ -38,7 +38,7 @@ def create_user():
         return jsonify({"message": "User registered successfuly"}), 201
 
     except Exception as err:
-        return jsonify({"message": "The {} field is missing".format(str(err))}), 404
+        return jsonify({"message": "The {} field is missing".format(str(err))}), 400
 
 @ROUTES.route('/API/v1/auth/login', methods=['POST'])
 def login():
@@ -48,7 +48,7 @@ def login():
         info = users.user_login(data["username"], data["password"])
         return info
     except Exception as err:
-        return jsonify({"message": "The {} field is missing".format(str(err))}), 404
+        return jsonify({"message": "The {} field is missing".format(str(err))}), 400
 
 @ROUTES.route('/API/v1/menu', methods=['POST'])
 @jwt_required
