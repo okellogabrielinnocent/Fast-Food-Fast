@@ -14,7 +14,7 @@ class TestBase(unittest.TestCase):
     create_user = json.dumps(dict(username="innocent", admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))
-    duplicate_user = json.dumps(dict(username="Gabriel", admin="False",
+    duplicate_user = json.dumps(dict(username="innocent", admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))
     empty_username = json.dumps(dict(username="", admin="False",

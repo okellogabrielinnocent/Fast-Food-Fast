@@ -5,14 +5,14 @@ from .test_base import TestBase
 class UserTesting(TestBase):
     """class for testing user sign up and login"""
 
-    # def test_create_user(self):
-    #     """test registering a new user """
+    def test_create_user(self):
+        """test registering a new user """
         
-    #     response = self.client.post('/API/v1/auth/user/signup',
-    #                            data=TestBase.create_user,
-    #                            content_type="application/json")
-    #     self.assertEqual(response.status_code, 201)
-    #     self.assertIn(b"User registered successfuly", response.data)
+        response = self.client.post('/API/v1/auth/user/signup',
+                               data=TestBase.create_user,
+                               content_type="application/json")
+        self.assertEqual(response.status_code, 201)
+        self.assertIn(b"User registered successfuly", response.data)
 
     def test_duplicate_username(self):
         """test method to check duplication"""
