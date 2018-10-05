@@ -15,7 +15,7 @@ class Database:
                         
         if not App.config.from_object(TestingConfig):            
             self.con = psycopg2.connect(host="localhost", user="postgres",
-                                        password="d1c60svhtc6rcr", dbname="fastfoodfast")
+                                        password="moschinogab19", dbname="fastfoodfast")
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
