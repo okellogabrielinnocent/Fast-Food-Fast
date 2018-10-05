@@ -34,6 +34,17 @@ class User(Database):
                     return True
                 else:
                     False
+
+    def get_admin_role(self,admin):
+                cur = self.con.cursor()
+                cur.execute("""SELECT admin FROM users where
+                            admin = True """, (admin, ))
+                self.con.commit()
+                result = cur.rowcount
+                if result > 0:
+                    return True
+                else:
+                    False
                     
     def user_login(self, username, password):
         """method for loging in a user"""
@@ -52,7 +63,7 @@ class User(Database):
                 '''
 
                 expires = datetime.timedelta(days=1)
-                user = dict(userid=data[0], username=data[1],
+                user = dict(user_id=data[0], username=data[1],
                                     password=data[2], admin=data[3])
                 access_token = create_access_token(identity=user,
                                                    expires_delta=expires)
@@ -63,4 +74,4 @@ class User(Database):
                 response = jsonify({"Message": "Username or password is not valid"}), 404
             return response
         except:
-            return jsonify({"message": "User login failed"})
+            return False

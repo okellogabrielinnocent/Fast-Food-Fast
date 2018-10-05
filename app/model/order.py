@@ -69,8 +69,12 @@ class Orders(Database):
         
         cur = self.con.cursor()
         cur.execute("""SELECT itemid FROM food_item""")
-        result = cur.fetchall()
-        return result
+        self.con.commit()
+        result = cur.rowcount
+        if result > 0:
+            return True
+        else:
+            False
     
     def get_order_list(self):
         
@@ -122,5 +126,4 @@ class Orders(Database):
         cur = self.con.cursor()
         cur.execute("""UPDATE orders SET order_status = %s WHERE orderid = %s""",
                     (order_status, orderid))
-        
         self.con.commit()
