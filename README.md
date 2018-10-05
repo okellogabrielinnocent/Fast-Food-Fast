@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/okellogabrielinnocent/Fast-Food-Fast.svg?branch=challeng3-api)](https://travis-ci.org/okellogabrielinnocent/Fast-Food-Fast) 
-[![Coverage Status](https://coveralls.io/repos/github/okellogabrielinnocent/Fast-Food-Fast/badge.svg?branch=challeng3-api)](https://coveralls.io/github/okellogabrielinnocent/Fast-Food-Fast?branch=challenge2-api)
+[![Coverage Status](https://coveralls.io/repos/github/okellogabrielinnocent/Fast-Food-Fast/badge.svg?branch=challeng3-tests)](https://coveralls.io/github/okellogabrielinnocent/Fast-Food-Fast?branch=challeng3-tests)
 [![Maintainability](https://api.codeclimate.com/v1/badges/07b8e72796f0cc9c1a30/maintainability)](https://codeclimate.com/github/okellogabrielinnocent/Fast-Food-Fast/maintainability)
 
 ## Project Overview
