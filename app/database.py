@@ -14,8 +14,8 @@ class Database:
         
                         
         if not App.config.from_object(TestingConfig):            
-            self.con = psycopg2.connect(host="ec2-23-21-171-249.compute-1.amazonaws.com", user="txulbvjcwlqbtl",
-                                        password="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e", dbname="d1c60svhtc6rcrcls")
+            self.con = psycopg2.connect(host="localhost", user="postgres",
+                                        password="d1c60svhtc6rcr", dbname="fastfoodfast")
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)

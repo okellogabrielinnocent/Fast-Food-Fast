@@ -71,4 +71,75 @@ class TestOrders(TestBase):
                                     headers=self.access_header,
                                 content_type="application/json")
             self.assertEqual(response.status_code, 400)
+            self.assertIn(b"parameter does not exist", response.data)
+    
+    def test_get_orders(self):
+            """test getting orders """
+            
+            response = self.client.get('/API/v1/users/orders',
+                                data=TestBase.get_food_items,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b"Orders", response.data)
+
+    def test_get_all_orders(self):
+            """test getting all orders for user by admin"""
+            
+            response = self.client.get('/API/v1/orders',
+                                data=TestBase.get_food_items,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b"Orders", response.data)
+
+    def test_get_order_by_id(self):
+            """test getting order by id """
+            
+            response = self.client.get('/API/v1/orders/7',
+                                data=TestBase.get_order_by_id,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b"Your order", response.data)
+
+    def test_get_order_by_wrong_id(self):
+            """test getting order by id """
+            
+            response = self.client.get('/API/v1/orders/78887089',
+                                data=TestBase.get_order_by_id,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 404)
+            self.assertIn(b"The order with order id", response.data)
+
+    def test_update_order(self):
+            """test for updating order by id orders """
+            
+            response = self.client.put('/API/v1/orders/1',
+                                data=TestBase.update_order,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b"Order updated successfuly", response.data)
+
+      
+    # def test_update_orders_with_wrong_id(self):
+    #         """test for updating order by id orders """
+            
+    #         response = self.client.put('/API/v1/orders/1t',
+    #                             data=TestBase.update_order_with_wrong_id,
+    #                                 headers=self.access_header,
+    #                             content_type="application/json")
+    #         self.assertEqual(response.status_code, 200)
+    #         self.assertIn(b"The order with order id ", response.data)
+
+    def test_update_order_with_no_fields(self):
+            """test for updating order without fields """
+            
+            response = self.client.put('/API/v1/orders/1',
+                                data=TestBase.update_order_with_no_fields,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 400)
             self.assertIn(b"parameter does not exist", response.data)    

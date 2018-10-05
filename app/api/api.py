@@ -183,5 +183,5 @@ def update_orders(orderid):
         return jsonify({"message": "Order updated successfuly"}), 200
         
     except Exception as err:
-        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 404
+        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
         return response

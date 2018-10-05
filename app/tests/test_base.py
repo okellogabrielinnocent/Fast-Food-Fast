@@ -5,13 +5,12 @@ from app import App
 import psycopg2
 from app.database import Database
 
-
 class TestBase(unittest.TestCase):
     App.app_context().push()
     """class containing test cases for testing """
 
     """Test cases for user registration and user login"""
-    create_user = json.dumps(dict(username="innocent", admin="False",
+    create_user = json.dumps(dict(username="Cent", admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))
     duplicate_user = json.dumps(dict(username="innocent", admin="False",
@@ -27,11 +26,11 @@ class TestBase(unittest.TestCase):
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))                                    
     user_login = json.dumps(dict(username="Gabriel", password="Gabriel"))
-    missing_login_fields = json.dumps(dict())
+    
     login_wrong_credentials = (dict(username="okello", password="Gabriel"))
 
     """Test cases for creating food items and orders"""
-    create_food_item = json.dumps(dict(description="ksavat mashed source",
+    create_food_item = json.dumps(dict(description="Innovet mashed source",
 	                            price=2000, user_id =1 ))
     
     create_duplicate_food_item = json.dumps(dict(description="Casava mashed source",
@@ -39,11 +38,16 @@ class TestBase(unittest.TestCase):
     create_food_item_with_empty_data = json.dumps(dict(description=" ",
 	                            price=2000, user_id =1 ))
     create_food_item_with_missing_field = json.dumps(dict(price=2000, user_id =1 ))
-
     get_food_items = json.dumps(dict())
-    place_order = json.dumps(dict(food_item_itemid=1,
-	                                quantity=4))
+    place_order = json.dumps(dict(food_item_itemid=1,quantity=4))
     place_order_with_no_itemid = json.dumps(dict())
+
+    get_order_by_id = json.dumps(dict(orderid=7,order_status="NEW",
+                                    order_date="2018-10-04 20:42:57.780776",
+                                    user_userid=1,food_item_itemid=1,quantity=4))
+    update_order = json.dumps(dict(orderid=7,order_status="Cancelled"))
+    update_order_with_wrong_id = json.dumps(dict(orderid=5,order_status="Pending"))
+    update_order_with_no_fields = json.dumps(dict())
 
 
     def setUp(self):
