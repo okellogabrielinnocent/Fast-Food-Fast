@@ -5,6 +5,7 @@ from app import App
 from app.model import tables
 from config import TestingConfig, DevelopmentConfig
 App.config.from_object(TestingConfig)
+import os
 
 
 class Database:
@@ -14,8 +15,7 @@ class Database:
         
                         
         if not App.config.from_object(TestingConfig):            
-            self.con = psycopg2.connect(host="localhost", user="postgres",
-                                        password="moschinogab19", dbname="fastfoodfast")
+            self.con = psycopg2.connect(os.environ('DATABASE_URL'))
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
