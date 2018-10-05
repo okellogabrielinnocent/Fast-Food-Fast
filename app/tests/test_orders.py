@@ -92,17 +92,7 @@ class TestOrders(TestBase):
                                 content_type="application/json")
             self.assertEqual(response.status_code, 200)
             self.assertIn(b"Orders", response.data)
-
-    def test_get_order_by_id(self):
-            """test getting order by id """
             
-            response = self.client.get('/API/v1/orders/7',
-                                data=TestBase.get_order_by_id,
-                                    headers=self.access_header,
-                                content_type="application/json")
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(b"Your order", response.data)
-
     def test_get_order_by_wrong_id(self):
             """test getting order by id """
             
@@ -124,15 +114,15 @@ class TestOrders(TestBase):
             self.assertIn(b"Order updated successfuly", response.data)
 
       
-    # def test_update_orders_with_wrong_id(self):
-    #         """test for updating order by id orders """
+    def test_update_orders_with_wrong_id(self):
+            """test for updating order by id orders """
             
-    #         response = self.client.put('/API/v1/orders/1t',
-    #                             data=TestBase.update_order_with_wrong_id,
-    #                                 headers=self.access_header,
-    #                             content_type="application/json")
-    #         self.assertEqual(response.status_code, 200)
-    #         self.assertIn(b"The order with order id ", response.data)
+            response = self.client.put('/API/v1/orders/1t',
+                                data=TestBase.update_order_with_wrong_id,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 200)
+            self.assertIn(b'Order updated successfuly', response.data)
 
     def test_update_order_with_no_fields(self):
             """test for updating order without fields """

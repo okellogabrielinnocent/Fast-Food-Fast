@@ -36,7 +36,7 @@ def create_user():
         
         if users.validate_user_duplicate(username, password, address,
                 email, admin) is True:
-                return jsonify({"message": "Username is already existing"}), 409
+                return jsonify({"message": "Email is already existing"}), 409
 
         users.sign_up(username, password, address, email, admin)
         return jsonify({"message": "User registered successfuly"}), 201

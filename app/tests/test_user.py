@@ -21,7 +21,7 @@ class UserTesting(TestBase):
                                data=TestBase.duplicate_user,
                                content_type="application/json")
         self.assertEqual(response.status_code, 409)
-        self.assertIn(b"Username is already existing",response.data)
+        self.assertIn(b"Email is already existing",response.data)
             
     def test__user_missing_user_name(self):
         """test method to validate missing field"""

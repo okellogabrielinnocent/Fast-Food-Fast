@@ -1,12 +1,13 @@
 from datetime import date, datetime
 from flask import jsonify
 from app.database import Database
-
+connect = Database()
 
 class Orders(Database):
     """Initialize order attributes"""
 
     def __init__(self):
+        self.con = connect.connection()
         """initializing constructor by 
         calling user class Database
         """

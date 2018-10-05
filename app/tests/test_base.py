@@ -10,9 +10,9 @@ class TestBase(unittest.TestCase):
     """class containing test cases for testing """
 
     """Test cases for user registration and user login"""
-    create_user = json.dumps(dict(username="Cent", admin="False",
+    create_user = json.dumps(dict(username="Gabriel", admin="False",
                                 password="Gabriel",address="Kisaasi",
-                                email="okellogabrielinnocent@gmail.com"))
+                                email="innocent@gmail.com"))
     duplicate_user = json.dumps(dict(username="innocent", admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))
@@ -30,7 +30,7 @@ class TestBase(unittest.TestCase):
     login_wrong_credentials = (dict(username="okello", password="Gabriel"))
 
     """Test cases for creating food items and orders"""
-    create_food_item = json.dumps(dict(description="Innovet mashed source",
+    create_food_item = json.dumps(dict(description="Kalooo mashed source",
 	                            price=2000, user_id =1 ))
     
     create_duplicate_food_item = json.dumps(dict(description="Casava mashed source",
