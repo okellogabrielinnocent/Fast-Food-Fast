@@ -15,7 +15,7 @@ class Database:
         
                         
         if not App.config.from_object(TestingConfig):            
-            self.con = psycopg2.connect(os.environ('DATABASE_URL'))
+            self.con = psycopg2.connect(os.environ['DATABASE_URL'])
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
@@ -23,7 +23,7 @@ class Database:
             self.con.commit()
 
         else:
-            print("====Tetsts Run===",App.config['TESTING'])
+            
             self.con = psycopg2.connect(host="localhost", user="postgres",
                                         password="moschinogab19", dbname="test_db")
             cur = self.con.cursor()
