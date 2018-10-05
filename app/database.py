@@ -13,8 +13,8 @@ class Database:
 
     def connection(self):
         if App.config.from_object(TestingConfig)==True:
-            self.con = psycopg2.connect(host="localhost", user="postgres",
-                                        password="moschinogab19", dbname="test_db")
+            self.con = psycopg2.connect(host="ec2-23-21-171-249.compute-1.amazonaws.com", user="txulbvjcwlqbtl",
+                                        password="moschinogab19", dbname="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e")
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
@@ -23,8 +23,8 @@ class Database:
             return self.con
 
         else:            
-            self.con = psycopg2.connect(host="localhost", user="postgres",
-                                        password="moschinogab19", dbname="fastfoodfast")
+            self.con = psycopg2.connect(host="ec2-23-21-171-249.compute-1.amazonaws.com", user="txulbvjcwlqbtl",
+                                        password="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e", dbname="d1c60svhtc6rcr")
             cur = self.con.cursor()
             cur.execute(tables.USER,)
             cur.execute(tables.FOODITEM,)
