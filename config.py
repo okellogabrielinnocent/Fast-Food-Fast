@@ -1,26 +1,27 @@
-import os
-SECRET_KEY = os.environ.get('DB_PASS')
-class Config(object):
+class Config():
     DEBUG = False
-    TESTING = False
-    SECRET_KEY = 'DB_PASS'
-
-
-class ProductionConfig(Config):
-    DEBUG = False
-    
-
-class StagingConfig(Config):
-    DEVELOPMENT = True
-    DEBUG = True
+    # SECRET_KEY = "whsdyuhgshji90woiryh3ikwgrdn9w7eui3kgwbnidjhnsmufycneh"
+    DB_NAME = "d1c60svhtc6rcr"
+    DB_USER = "txulbvjcwlqbtl"
+    DB_PASS = "9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e"
+    DB_HOST = "ec2-23-21-171-249.compute-1.amazonaws.com"
+    DB_PORT = "5432"
 
 
 class DevelopmentConfig(Config):
-    DEVELOPMENT = True
     DEBUG = True
-    TESTING = False
+    DB_NAME = "fastfoodfast"
+    DB_USER = "postgres"
+    DB_PASS = "moschinogab19"
+    DB_HOST = "localhost"
+    DB_PORT = "5432"
 
 
 class TestingConfig(Config):
+    DEBUG = True
     TESTING = True
-
+    DB_NAME = "test_db"
+    DB_USER = "postgres"
+    DB_PASS = "moschinogab19"
+    DB_HOST = "localhost"
+    DB_PORT = "5432"
