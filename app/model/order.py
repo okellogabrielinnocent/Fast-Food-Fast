@@ -111,20 +111,22 @@ class Orders(Database):
         cur = self.con.cursor()
         cur.execute(sql)
         result = cur.fetchall()
-
-        order_info = {}
+    
+        order_list = []
         for info in result:
+            order_info = {}
             order_info['orderid'] = info[0]
             order_info['order_date'] = info[1]
             order_info['quantity'] = info[2]
             order_info['order_status'] = info[3]
-        
-        return order_info
+            order_list.append(order_info)
+        return order_list
 
     def update_order(self, userid, orderid, order_status):
         """method to update an order"""
         
         cur = self.con.cursor()
-        cur.execute("""UPDATE orders SET order_status = %s WHERE orderid = %s""",
-                    (order_status, orderid))
+        cur.execute("""UPDATE orders SET order_status = %s WHERE orderid = %s,userid = %s""",
+                    (order_status, orderid,userid))
         self.con.commit()
+    

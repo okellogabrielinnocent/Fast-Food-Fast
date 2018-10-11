@@ -1,0 +1,267 @@
+FORMAT: 1A
+HOST: http://127.0.0.1:5000/
+
+# Fasts Food Fast
+
+Fast-Food-Fast is a food delivery service app for a restaurant.
+
+
+## USER REGISTERATION [/API/v1/auth/user/signup]
+### Register a new user [POST]
+
+For a new user of the application, he or she has to create an account. The account created enables one to start placing orders once they login. It take json data
+
++ Request (application/json)
+
+        {	
+                "username":"gabrielm",
+		"admin":"True",
+                "password":"Gabriel",
+                "address":"Kisaasi",
+                "email":"khkzp@gmail.com"
+        }  
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /API/v1/auth/user/signup
+
+    + Body
+
+            {
+            "message": "User registered successfuly"
+            }
+## USER LOGIN [/API/v1/auth/login]
+### Login [POST]
+
+Once a user has finished registering, they would have to log in. This also takes 
+json data
+
++ Request (application/json)
+
+        {	
+                "username":"gabrielm",		
+                "password":"Gabriel""
+        }   
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /API/v1/auth/users/login
+
+    + Body
+
+        {
+                "Message": "Login successful",
+                "Token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MzkyMjUyMTgsIm5iZiI6MTUzOTIyNTIxOCwianRpIjoiZDc4ZmE0OWEtODZjYy00MGQ1LWE4NTQtMDM1ZWFkZDBlODk4IiwiZXhwIjoxNTM5MzExNjE4LCJpZGVudGl0eSI6eyJ1c2VyX2lkIjo0LCJ1c2VybmFtZSI6ImdhYnJpZWxtIiwicGFzc3dvcmQiOiJHYWJyaWVsIiwiYWRtaW4iOiJLaXNhYXNpIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.LXGvrRIdkumhCG-TDaZQqNtz8idQFPeEOiqKDb6O2SQ"
+        }
+## CREATING AN IN MENU [/API/v1/menu]
+
+### Create an entry [POST]
+
+A registered user Admin creates menu items.This takes JSON data
+    + Headers
+    
+        Authorization: Bearer token
+        
++ Request (application/json)
+
+        {
+                "description":"Meat and Chicken, Rice",
+                "price": 2000
+        }
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /API/v1/menu
+
+    + Body
+
+        {
+                "Item": {
+                        "description": "Meat and Chicken, Kalo Rice",
+                        "price": 2000,
+                        "user_userid": 4
+                        },
+                "message": "Item created successfuly"
+        }
+### Get all menu items [GET]
+
+A logged in user get all menu items created.This returns json data
+    
+    + Headers
+    
+            Authorization: Bearer token
+            
+    + Headers
+
+            Location: /API/v1/entries
+
++ Response 200 (application/json)
+
+
+        {
+        "Avialable menu": [
+                {
+                "description": "Ovals and posho",
+                "itemid": 2,
+                "price": 5000
+                },
+                {
+                "description": "Casavaand mashed source",
+                "itemid": 3,
+                "price": 2000
+                },
+                {
+                "description": "Casava mashed source",
+                "itemid": 4,
+                "price": 2000
+                },
+                {
+                "description": "Meat and Chicken, Rice",
+                "itemid": 5,
+                "price": 2000
+                },
+                {
+                "description": "Meat and Chicken, Kalo Rice",
+                "itemid": 6,
+                "price": 2000
+                }
+        ]
+        }
+## PLACING ORDER [/API/v1/users/orders]
+
+### Place order from menu [POST]
+
+A registered user can place and order.This takes JSON data
+    + Headers
+    
+        Authorization: Bearer token
+        
++ Request (application/json)
+
+        {	
+                "food_item_itemid":2,
+                "quantity":5
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /API/v1/users/orders
+
+    + Body
+
+        {
+                "message": "Order placed successfuly"
+        }
+### Get user orders [GET]
+
+A logged in user get all orders he made.This returns json data
+    
+    + Headers
+    
+            Authorization: Bearer token
+            
+    + Headers
+
+            Location: /API/v1/users/orders
+
++ Response 200 (application/json)
+
+
+        {
+                "Orders": [
+                        {
+                        "food_item_itemid": 2,
+                        "order_date": "2018-10-11 05:50:53.759258",
+                        "order_status": "NEW",
+                        "orderid": 7,
+                        "quantity": 5,
+                        "user_userid": 4
+                        }
+                        ]
+        }
+### Get all users orders [GET]
+
+A logged in admin sees all orders.This returns json data
+    
+    + Headers
+    
+            Authorization: Bearer token
+            
+    + Headers
+
+            Location: /API/v1/users/orders
+
++ Response 200 (application/json)
+
+
+        {
+                "Orders": [
+                        {
+                        "food_item_itemid": 2,
+                        "order_date": "2018-10-11 05:50:53.759258",
+                        "order_status": "NEW",
+                        "orderid": 7,
+                        "quantity": 5,
+                        "user_userid": 4
+                        }
+                        ]
+        }
+## GETTING A SINGLE ORDER AND UPDATING  [/API/v1/orders/7]
+### Get single order [GET]
+
+A logged in Admin user can get a single entry's content. Data is returned in json format
+    
+    + Headers
+    
+            Authorization: Bearer token
+            
+    + Headers
+
+            Location: /API/v1/orders/7
+
++ Response 200 (application/json)
+
+        {
+                "Your order": [
+                        {
+                        "order_date": "2018-10-11 05:50:53.759258",
+                        "order_status": "NEW",
+                        "orderid": 7,
+                        "quantity": 5
+                        }
+                ]
+        }
+
+### update an entry [PUT]
+
+A logged in Admin user can modify an orders status to Accepted, Rejected,and Pending.A response returned in JSON
+    
+    + Headers
+    
+            Authorization: Bearer token
+            
+    + Headers
+
+            Location: /API/v1/orders/7
+
+    + Request (application/json)
+
+        {
+                "orderid":7,
+                "order_status":"Accepted"
+        }
+                
+
++ Response 200 (application/json)
+
+        {
+                "message": "Order updated successfuly"
+        }
