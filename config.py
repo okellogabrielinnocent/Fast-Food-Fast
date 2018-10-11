@@ -1,6 +1,6 @@
 class Config():
     DEBUG = False
-    # SECRET_KEY = "whsdyuhgshji90woiryh3ikwgrdn9w7eui3kgwbnidjhnsmufycneh"
+    SECRET_KEY = "whsdyuhgshji90woiryh3ikwgrdn9w7eui3kgwbnidjhnsmufycneh"
     DB_NAME = "d1c60svhtc6rcr"
     DB_USER = "txulbvjcwlqbtl"
     DB_PASS = "9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e"
