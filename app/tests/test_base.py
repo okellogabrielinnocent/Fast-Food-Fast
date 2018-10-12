@@ -51,6 +51,7 @@ class TestBase(unittest.TestCase):
 
 
     def setUp(self):
+        App.config['TESTING'] = True
         self.client = App.test_client()
         with App.test_request_context():
             self.loggedin_user1 = dict(user_id=1, username='Gabriel',

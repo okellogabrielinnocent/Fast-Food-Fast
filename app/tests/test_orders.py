@@ -3,15 +3,15 @@ from .test_base import TestBase
 class TestOrders(TestBase):
                 
     """Define test for order."""
-    def test_add_item_to_menu(self):
-        """test creating a new food item """
+    # def test_add_item_to_menu(self):
+    #     """test creating a new food item """
         
-        response = self.client.post('/API/v1/menu',
-                               data=TestBase.create_food_item,
-                               headers=self.access_header, 
-                               content_type="application/json")
-        self.assertEqual(response.status_code, 201)
-        self.assertIn(b"Item created successfuly", response.data)
+    #     response = self.client.post('/API/v1/menu',
+    #                            data=TestBase.create_food_item,
+    #                            headers=self.access_header, 
+    #                            content_type="application/json")
+    #     self.assertEqual(response.status_code, 201)
+    #     self.assertIn(b"Item created successfuly", response.data)
     
     def test_create_duplicate_item(self):
             """test creating a new order with same data """
@@ -73,15 +73,15 @@ class TestOrders(TestBase):
             self.assertEqual(response.status_code, 400)
             self.assertIn(b"parameter does not exist", response.data)
     
-    def test_get_orders(self):
-            """test getting orders """
+    # def test_get_orders(self):
+    #         """test getting orders """
             
-            response = self.client.get('/API/v1/users/orders',
-                                data=TestBase.get_food_items,
-                                    headers=self.access_header,
-                                content_type="application/json")
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(b"Orders", response.data)
+    #         response = self.client.get('/API/v1/users/orders',
+    #                             data=TestBase.get_food_items,
+    #                                 headers=self.access_header,
+    #                             content_type="application/json")
+    #         self.assertEqual(response.status_code, 200)
+    #         self.assertIn(b"Orders", response.data)
 
     def test_get_all_orders(self):
             """test getting all orders for user by admin"""

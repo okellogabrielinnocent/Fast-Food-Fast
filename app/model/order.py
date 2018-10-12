@@ -7,7 +7,7 @@ class Orders(Database):
     """Initialize order attributes"""
 
     def __init__(self):
-        self.con = connect.connection()
+        # self.con = connect.connection()
         """initializing constructor by 
         calling user class Database
         """

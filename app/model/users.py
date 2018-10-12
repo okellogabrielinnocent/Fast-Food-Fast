@@ -12,7 +12,6 @@ class User(Database):
     def __init__(self):
         """user class constructor"""
         Database.__init__(self)
-        self.con = connect.connection()
 
     def sign_up(self, username, password, address,
                 email, admin):
