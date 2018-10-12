@@ -5,7 +5,7 @@ class Config():
     DB_USER = "txulbvjcwlqbtl"
     DB_PASS = "9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e"
     DB_HOST = "ec2-23-21-171-249.compute-1.amazonaws.com"
-    DB_PORT = "5432"
+    
 
 
 class DevelopmentConfig(Config):
@@ -14,7 +14,7 @@ class DevelopmentConfig(Config):
     DB_USER = "postgres"
     DB_PASS = "moschinogab19"
     DB_HOST = "localhost"
-    DB_PORT = "5432"
+    
 
 
 class TestingConfig(Config):
@@ -24,4 +24,4 @@ class TestingConfig(Config):
     DB_USER = "postgres"
     DB_PASS = "moschinogab19"
     DB_HOST = "localhost"
-    DB_PORT = "5432"
+   
