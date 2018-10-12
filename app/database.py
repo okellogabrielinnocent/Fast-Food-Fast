@@ -58,8 +58,8 @@ class Database:
 
     def __init__(self):
         if not App.config['TESTING']:
-            self.con = psycopg2.connect(host="localhost", user="postgres",
-                                        password="moschinogab19", dbname="fastfoodfast")
+            self.con = psycopg2.connect(host="ec2-23-21-171-249.compute-1.amazonaws.com", user="txulbvjcwlqbtl",
+                                        password="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e", dbname="d1c60svhtc6rcr")
             self.con.autocommit = True
             cur = self.con.cursor()
             cur.execute(tables.USER,)
@@ -72,8 +72,8 @@ class Database:
             self.con.commit()
             # return self.con
         else:
-            self.con = psycopg2.connect(host="localhost", user="postgres",
-                                        password="moschinogab19", dbname="test_db")
+            self.con = psycopg2.connect(host="ec2-23-21-171-249.compute-1.amazonaws.com", user="txulbvjcwlqbtl",
+                                        password="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e", dbname="test_db")
             self.con.autocommit = True
             cur = self.con.cursor()
             cur.execute(tables.USER,)
