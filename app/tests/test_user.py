@@ -5,7 +5,7 @@ from .test_base import TestBase
 class UserTesting(TestBase):
     """class for testing user sign up and login"""
 
-    # def test_create_user(self):
+    # def test_duplicate_username(self):
     #     """test registering a new user """
         
     #     response = self.client.post('/API/v1/auth/user/signup',
@@ -14,14 +14,15 @@ class UserTesting(TestBase):
     #     self.assertEqual(response.status_code, 201)
     #     self.assertIn(b"User registered successfuly", response.data)
 
-    def test_duplicate_username(self):
-        """test method to check duplication"""
+    def test_create_user(self):
+        """test method to create user"""
         
         response = self.client.post('/API/v1/auth/user/signup',
                                data=TestBase.duplicate_user,
                                content_type="application/json")
-        self.assertEqual(response.status_code, 409)
-        self.assertIn(b"Email is already existing",response.data)
+        self.assertEqual(response.status_code, 201)
+        # self.assertIn(b"Email is already existing",response.data)
+        self.assertIn(b"User registered successfuly", response.data)
             
     def test__user_missing_user_name(self):
         """test method to validate missing field"""

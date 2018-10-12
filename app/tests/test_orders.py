@@ -13,15 +13,15 @@ class TestOrders(TestBase):
     #     self.assertEqual(response.status_code, 201)
     #     self.assertIn(b"Item created successfuly", response.data)
     
-    def test_create_duplicate_item(self):
-            """test creating a new order with same data """
+    # def test_create_duplicate_item(self):
+    #         """test creating a new order with same data """
             
-            response = self.client.post('/API/v1/menu',
-                                data=TestBase.create_duplicate_food_item,
-                                    headers=self.access_header,
-                                content_type="application/json")
-            self.assertEqual(response.status_code, 409)
-            self.assertIn(b"Item already existing", response.data)
+    #         response = self.client.post('/API/v1/menu',
+    #                             data=TestBase.create_duplicate_food_item,
+    #                                 headers=self.access_header,
+    #                             content_type="application/json")
+    #         self.assertEqual(response.status_code, 409)
+    #         self.assertIn(b"Item already existing", response.data)
 
     def test_create_order_with_empty_item_data(self):
         """test creating a new order with empty data """
