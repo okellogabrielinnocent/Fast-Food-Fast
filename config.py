@@ -1,10 +1,9 @@
 class Config():
     DEBUG = False
-    SECRET_KEY = "whsdyuhgshji90woiryh3ikwgrdn9w7eui3kgwbnidjhnsmufycneh"
-    DB_NAME = "d1c60svhtc6rcr"
-    DB_USER = "txulbvjcwlqbtl"
-    DB_PASS = "9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e"
-    DB_HOST = "ec2-23-21-171-249.compute-1.amazonaws.com"
+    DB_NAME = "d8qmqu2rair9cl"
+    DB_USER = "tczqtmilqwvjnb"
+    DB_PASS = "9f5d9bdedd64445ff23e4c7b01511693525e6823614c43620eaa1356485b0bbf"
+    DB_HOST = "ec2-23-21-147-71.compute-1.amazonaws.com"
     
 
 
