@@ -1,4 +1,4 @@
-from .test_base import TestBase
+from app.tests.test_base import TestBase
         
 class TestOrders(TestBase):
                 
@@ -13,15 +13,15 @@ class TestOrders(TestBase):
     #     self.assertEqual(response.status_code, 201)
     #     self.assertIn(b"Item created successfuly", response.data)
     
-    # def test_create_duplicate_item(self):
-    #         """test creating a new order with same data """
+    def test_create_duplicate_item(self):
+            """test creating a new order with same data """
             
-    #         response = self.client.post('/API/v1/menu',
-    #                             data=TestBase.create_duplicate_food_item,
-    #                                 headers=self.access_header,
-    #                             content_type="application/json")
-    #         self.assertEqual(response.status_code, 409)
-    #         self.assertIn(b"Item already existing", response.data)
+            response = self.client.post('/API/v1/menu',
+                                data=TestBase.create_duplicate_food_item,
+                                    headers=self.access_header,
+                                content_type="application/json")
+            self.assertEqual(response.status_code, 409)
+            self.assertIn(b"Item already existing", response.data)
 
     def test_create_order_with_empty_item_data(self):
         """test creating a new order with empty data """
@@ -60,8 +60,8 @@ class TestOrders(TestBase):
                                 data=TestBase.place_order,
                                     headers=self.access_header,
                                 content_type="application/json")
-            self.assertEqual(response.status_code, 400)
-            # self.assertIn(b"Order placed successfuly", response.data)
+            self.assertEqual(response.status_code, 201)
+            self.assertIn(b"Order placed successfuly", response.data)
 
     def test_place_order_with_no_itemid(self):
             """test placing order by user without fields"""
@@ -83,15 +83,15 @@ class TestOrders(TestBase):
     #         self.assertEqual(response.status_code, 200)
     #         self.assertIn(b"Orders", response.data)
 
-    def test_get_all_orders(self):
-            """test getting all orders for user by admin"""
+    # def test_get_all_orders(self):
+    #         """test getting all orders for user by admin"""
             
-            response = self.client.get('/API/v1/orders',
-                                data=TestBase.get_food_items,
-                                    headers=self.access_header,
-                                content_type="application/json")
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(b"Orders", response.data)
+    #         response = self.client.get('/API/v1/orders',
+    #                             data=TestBase.get_food_orders,
+    #                                 headers=self.access_header,
+    #                             content_type="application/json")
+    #         self.assertEqual(response.status_code, 200)
+    #         self.assertIn(b"Orders", response.data)
             
     def test_get_order_by_wrong_id(self):
             """test getting order by id """

@@ -51,23 +51,16 @@ def create_user():
 @ROUTES.route('/API/v1/auth/login', methods=['POST'])
 # @swag_from('../Docs/login.yml')
 def login():
-
-    # try:
-    #     data = request.get_json()
-    #     info = users.user_login(data["username"], data["password"])
-    #     return info
-    # except Exception as err:
-    #     return jsonify({"message": "The {} field is missing".format(str(err))}), 400
-    # def login():
     try: 
         data = request.get_json()
         if not data:
-            return jsonify({'message': 'Data should be in JSON format!'}), 400
+            return jsonify({'Message': 'Data passed should be in JSON format!'}), 400
         username = data['username']
         password = data['password']
-        logged_in = users.user_login(username, password)
-        if logged_in is not None:
-            return jsonify({'Successfully logged in': logged_in})
+        access_token = users.user_login(username, password)
+        if access_token is not None:
+            return jsonify({"Message": "Login successful",
+                                    "Token": access_token})
         return jsonify({'message':'Invalid password or username'}), 400  
     except KeyError:
         return jsonify({'message': 'Missing key parameter: username, password'}), 400
@@ -168,7 +161,6 @@ def get_all_orders():
       
     try:
         token_owner = get_jwt_identity()
-        print("=====tokem===",token_owner)
         if token_owner['admin'] == True:
             result = orders.get_order_list()
             if result is None:
@@ -180,7 +172,7 @@ def get_all_orders():
     except Exception as err:
         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
         return response
-
+    
 @ROUTES.route('/API/v1/orders/<orderid>', methods=['GET'])
 @jwt_required
 def get_order_by_id(orderid):

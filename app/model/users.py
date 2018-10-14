@@ -66,7 +66,7 @@ class User(Database):
         #         expires = datetime.timedelta(days=1)
         #         user = dict(user_id=data[0], username=data[1],
         #                             password=data[2], address=data[3],
-        #                             email=data[5], admin=data[6])
+        #                             email=data[4], admin=data[5])
         #         access_token = create_access_token(identity=user,
         #                                            expires_delta=expires)
         #         response = jsonify({"Message": "Login successful",
@@ -87,7 +87,7 @@ class User(Database):
         if user_count > 0:
             user = dict(user_id=data[0], username=data[1],
                                     password=data[2], address=data[3],
-                                    email=data[5], admin=data[6])
+                                    email=data[4], admin=data[5])
             token = create_access_token(identity=user)
             response = token
         else: 
