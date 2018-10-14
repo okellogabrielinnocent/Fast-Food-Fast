@@ -49,30 +49,47 @@ class User(Database):
                     
     def user_login(self, username, password):
         """method for loging in a user"""
-        try:
-            response = ""
-            cur = self.con.cursor()
-            cur.execute("""SELECT * FROM  Users where username = %s AND
-                        password = %s""", (username, password))
-            self.con.commit()
-            count = cur.rowcount
-            data = cur.fetchone()
+        # try:
+        #     response = ""
+        #     cur = self.con.cursor()
+        #     cur.execute("""SELECT * FROM  Users where username = %s AND
+        #                 password = %s""", (username, password))
+        #     self.con.commit()
+        #     count = cur.rowcount
+        #     data = cur.fetchone()
             
-            if count > 0:
-                '''Lets user create access token 
-                for a user login to acces resources
-                '''
+        #     if count > 0:
+        #         '''Lets user create access token 
+        #         for a user login to acces resources
+        #         '''
 
-                expires = datetime.timedelta(days=1)
-                user = dict(user_id=data[0], username=data[1],
-                                    password=data[2], admin=data[3])
-                access_token = create_access_token(identity=user,
-                                                   expires_delta=expires)
-                response = jsonify({"Message": "Login successful",
-                                    "Token": access_token})
-                response.status_code = 200
-            else:
-                response = jsonify({"Message": "Username or password is not valid"}), 404
-            return response
-        except:
-            return False
+        #         expires = datetime.timedelta(days=1)
+        #         user = dict(user_id=data[0], username=data[1],
+        #                             password=data[2], address=data[3],
+        #                             email=data[5], admin=data[6])
+        #         access_token = create_access_token(identity=user,
+        #                                            expires_delta=expires)
+        #         response = jsonify({"Message": "Login successful",
+        #                             "Token": access_token})
+        #         response.status_code = 200
+        #     else:
+        #         response = jsonify({"Message": "Username or password is not valid"}), 404
+        #     return response
+        # except:
+        #     return False
+
+        response = ''
+        query = '''SELECT * FROM users WHERE username = %s AND password = %s'''
+        cur = self.con.cursor()
+        cur.execute(query, (username, password))
+        user_count = cur.rowcount
+        data = cur.fetchone()
+        if user_count > 0:
+            user = dict(user_id=data[0], username=data[1],
+                                    password=data[2], address=data[3],
+                                    email=data[5], admin=data[6])
+            token = create_access_token(identity=user)
+            response = token
+        else: 
+            response = None
+        return response

@@ -53,5 +53,3 @@ ORDER = """CREATE TABLE IF NOT EXISTS orders (
     REFERENCES food_item (itemid)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)"""
-
-    
