@@ -87,7 +87,7 @@ def add_item_to_menu():
             return jsonify({"message": "Item already existing"}), 409
 
         orders.create_item(description, price, data["user_userid"])
-        return jsonify({"message": "Item created successfuly","Item":data}), 201
+        return jsonify({"message": "Item created successfuly"}), 201
         
     except Exception as err:
         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
@@ -140,10 +140,6 @@ def get_orders():
       
     try:
         token_owner = get_jwt_identity()
-        token_owner = token_owner["user_id"]
-        if token_owner !=  token_owner["user_id"]:
-            return jsonify({"Only user who place order can view it"}), 403
-        
         result = orders.get_order_list()
         return jsonify({"Orders": result}), 200
 
@@ -161,18 +157,13 @@ def get_all_orders():
       
     try:
         token_owner = get_jwt_identity()
-        if token_owner['admin'] == True:
-            result = orders.get_order_list()
-            if result is None:
-                return jsonify({'message':'Order does not exist'}), 200
-        
-            return jsonify({"Orders": result}), 200
-        return jsonify({'message':'Only an admin can access all orders'}), 403
+        result = orders.get_order_list()
+        return jsonify({"Orders": result}), 200
 
     except Exception as err:
         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
         return response
-    
+
 @ROUTES.route('/API/v1/orders/<orderid>', methods=['GET'])
 @jwt_required
 def get_order_by_id(orderid):
@@ -192,15 +183,19 @@ def get_order_by_id(orderid):
 @ROUTES.route('/API/v1/orders/<orderid>',methods=['PUT'])
 @jwt_required
 def update_orders(orderid):
-    """view to update an order"""
-    
+    token_owner = get_jwt_identity()
+    # if token_owner['admin'] == True:
     try:
         data = request.get_json()
-        token_owner = get_jwt_identity()
-        data["user_userid"] = token_owner["user_id"]        
-        data = orders.update_order(data["user_userid"],data["orderid"],data["order_status"])
-        return jsonify({"message": "Order updated successfuly"}), 200
-        
-    except Exception as err:
-        response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
-        return response
+        if not data:
+            return jsonify({'message': 'Data should be in JSON format!'}), 400
+        else:
+            valid_status = ['Accepted','Complete', 'Processing', 'Cancelled']            
+            if data["order_status"] not in valid_status:
+                return ('Invalid status')
+
+        status = data['order_status']
+        result = orders.update_order(orderid, status)
+        return jsonify({'Updated_order': result})
+    except:
+        return jsonify({"Message": "The order with order id {} does not exist".format(orderid)}), 404

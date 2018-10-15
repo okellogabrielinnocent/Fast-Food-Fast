@@ -105,11 +105,9 @@ class Orders(Database):
         """ 
         Returns the details of a order whose id is provided
         """
-        sql = "SELECT orderid, order_date, quantity,order_status," \
-              "user_userid FROM orders WHERE orderid =%s" % orderid
-
         cur = self.con.cursor()
-        cur.execute(sql)
+        cur.execute("SELECT orderid, order_date, quantity,order_status," \
+                    "user_userid FROM orders WHERE orderid =%s" % orderid)
         result = cur.fetchall()
     
         order_list = []
@@ -122,11 +120,22 @@ class Orders(Database):
             order_list.append(order_info)
         return order_list
 
-    def update_order(self, userid, orderid, order_status):
-        """method to update an order"""
+    def update_order(self, orderid, order_status):
         
-        cur = self.con.cursor()
-        cur.execute("""UPDATE orders SET order_status = %s WHERE orderid = %s,userid = %s""",
-                    (order_status, orderid,userid))
-        self.con.commit()
+            orders_list=[]
+            cur = self.con.cursor()
+            cur.execute('''UPDATE orders SET order_status = %s WHERE orderid = %s 
+                            RETURNING orderid, order_status, order_date, quantity,
+                            food_item_itemid, user_userid''', (order_status, orderid))
+            updated = cur.fetchone()
+            u_ord = {}
+            u_ord['orderid'] = updated[0]
+            u_ord['order_date'] = updated[2]
+            u_ord['quantity'] = updated[5]
+            u_ord['order_status'] = updated[1]
+            u_ord['food_item_itemid'] = updated[4]
+            u_ord['user_userid'] = updated[3]
+
+            orders_list.append(u_ord)
+            return orders_list
     
