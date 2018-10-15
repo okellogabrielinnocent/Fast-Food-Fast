@@ -1,1 +1,4 @@
 app
+.pytest_cache
+coverage_html
+__pycache__
