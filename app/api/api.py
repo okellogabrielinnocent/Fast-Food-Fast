@@ -36,7 +36,7 @@ def create_user():
         
         if users.validate_user_duplicate(username, password, address,
                 email, admin) is True:
-                return jsonify({"message": "Username is already existing"}), 409
+                return jsonify({"message": "Email is already existing"}), 409
 
         users.sign_up(username, password, address, email, admin)
         return jsonify({"message": "User registered successfuly"}), 201
@@ -77,7 +77,7 @@ def add_item_to_menu():
             return jsonify({"message": "Item already existing"}), 409
 
         orders.create_item(description, price, data["user_userid"])
-        return jsonify({"message": "Item created successfuly"},data), 201
+        return jsonify({"message": "Item created successfuly","Item":data}), 201
         
     except Exception as err:
         response = jsonify({"Error": "The {} parameter does not exist".format(str(err))}), 400
@@ -130,6 +130,10 @@ def get_orders():
       
     try:
         token_owner = get_jwt_identity()
+        token_owner = token_owner["user_id"]
+        if token_owner !=  token_owner["user_id"]:
+            return jsonify({"Only user who place order can view it"}), 403
+        
         result = orders.get_order_list()
         return jsonify({"Orders": result}), 200
 

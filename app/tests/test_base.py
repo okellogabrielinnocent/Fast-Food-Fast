@@ -10,15 +10,15 @@ class TestBase(unittest.TestCase):
     """class containing test cases for testing """
 
     """Test cases for user registration and user login"""
-    create_user = json.dumps(dict(username="Cent", admin="False",
-                                password="Gabriel",address="Kisaasi",
-                                email="okellogabrielinnocent@gmail.com"))
+    create_user = json.dumps(dict(username="susan", admin="False",
+                                password="susanaa",address="Kissi",
+                                email="susaasnsa@gmail.com"))
     duplicate_user = json.dumps(dict(username="innocent", admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))
     empty_username = json.dumps(dict(username="", admin="False",
                                 password="Gabriel",address="Kisaasi",
-                                email="okellogabrielinnocent@gmail.com"))
+                                email="okellogabrilinnocent@gmail.com"))
     validate_number_in_field = json.dumps(dict(username="123344", admin="False",
                                 password="Gabriel",address="Kisaasi",
                                 email="okellogabrielinnocent@gmail.com"))
@@ -30,8 +30,8 @@ class TestBase(unittest.TestCase):
     login_wrong_credentials = (dict(username="okello", password="Gabriel"))
 
     """Test cases for creating food items and orders"""
-    create_food_item = json.dumps(dict(description="Innovet mashed source",
-	                            price=2000, user_id =1 ))
+    create_food_item = json.dumps(dict(description="Ovals and posho",
+	                            price=5000, user_id =1 ))
     
     create_duplicate_food_item = json.dumps(dict(description="Casava mashed source",
 	                            price=2000, user_id =1 ))
@@ -51,6 +51,7 @@ class TestBase(unittest.TestCase):
 
 
     def setUp(self):
+        App.config['TESTING'] = True
         self.client = App.test_client()
         with App.test_request_context():
             self.loggedin_user1 = dict(user_id=1, username='Gabriel',

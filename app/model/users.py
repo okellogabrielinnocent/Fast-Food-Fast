@@ -4,10 +4,11 @@ from flask import jsonify
 from flask_jwt_extended import create_access_token
 from app.database import Database
 
+connect = Database()
 
 class User(Database):
     """class for implementing user functions"""
-
+    
     def __init__(self):
         """user class constructor"""
         Database.__init__(self)
@@ -27,7 +28,7 @@ class User(Database):
                 email, admin):
                 cur = self.con.cursor()
                 cur.execute("""SELECT username FROM Users where
-                            username =%s """, (username, ))
+                            email =%s """, (email, ))
                 self.con.commit()
                 result = cur.rowcount
                 if result > 0:
