@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Fast Food Fast</title>
-    <link rel="stylesheet" type="text/css" href="UI/css/styles.css" />
-    <link rel="icon" href="UI/images/favicon-16x16.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="icon" href="images/favicon-16x16.png" type="image/gif" sizes="16x16">
 </head>
 
 <body>
@@ -22,25 +22,26 @@
     </div>
 
     <div class="main">
-        <div id="image">
-            <img src="UI/images/fastfoodhome.jpg" height="650" width="720" /></div>
+        <!-- <div id="image">
+            <img src="UI/images/fastfoodhome.jpg" height="650" width="720" />
+        </div> -->
         <div class="login">
             <div id="title">
                 <h3>Fast Food Fast</h3>
             </div>
             <form id ="SignInForm">
                 <label>Email:</label>
-                <input type="email" placeholder="name@domain.com" required />
+                <input type="email" id="email" placeholder="name@domain.com" required />
                 <label>Password:</label>
-                <input type="password" placeholder="Password" required min="6" />
-                <input type="submit" id="accept-btn" value="Login"  />
+                <input type="password" id="userPass" placeholder="Password" required min="6" />
+                <input type="submit" id="accept-btn" value="Login" href="UI/admin/admin.html" />
             </form>
             <div id="terms"><p><small>If you donot have account <a href="UI/register.html">Register</a>
             <div id="terms"><p><small>By submiting, you agree to the <a href="#">Terms and Conditions</a> here.</small></p></div>
             <div id="terms"><p><small>Admin login<a href="UI/admin/login.html"> Login</a> here.</small></p></div>
         </div>
     </div>
-    <script src="UI/js/login.js" type="module"></script
+    <script src="js/login.js"></script
 </body>
 
 </html>
