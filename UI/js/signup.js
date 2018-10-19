@@ -1,49 +1,37 @@
-import {loginPageUrl, hostAndPortUrl} from './main.js'
+// Function for signup
+document.getElementById('SignUpForm').addEventListener('submit', userSignup)
 
-let signupErrorArea = document.getElementById('signupErrorArea');
-//signupErrorArea.style.display = 'none';
-
-let form = document.getElementById('SignUpForm');
-form.addEventListener('submit', function signup(event) {
-    event.preventDefault();
-    let data = {
-        username: form.username.value,
-        email: form.email.value,
-        password: form.password.value
-    };
-    let myHeader = new Headers({"Content-Type": "application/json", "Accept": "application/json"});
-    const signup_api_url = hostAndPortUrl+'/v1/auth/user/signup';
-    let option = {
-        headers: myHeader,
-        method: "POST",
-        body: JSON.stringify(data)
-    };
-    let signup_request = new Request(signup_api_url, option);
-    function readResponseAsJSON(response) {
-
-        return response.json().then(json => {
-          return {
-                   responseData: json,
-                   status: response.status
-                 }
+function userSignup(event){
+	event.preventDefault();
+    let username = document.getElementById('username').value;
+    let address = document.getElementById('address').value;
+	let email = document.getElementById('email').value;
+	let password = document.getElementById('password').value;
+	let error = document.getElementById('signupErrorArea');
+	let status = '';
+	fetch(`http://127.0.0.1:5000/API/v1/auth/user/signup`, {
+		method:'POST',
+		headers: {
+            'Content-type':'application/json'
+        },
+        
+        body:JSON.stringify(
+            {
+                username:username,
+                password:password,
+                address:address,
+                email:email
+               
         })
-    }
-    function signupJSON(requestPath) {
-        fetch(requestPath)
-            .then(readResponseAsJSON)
-            .then(function (response) {
-                if(response.status >= 200 && response.status < 300){
-                    // when  signup succeds
-                    alert(response.responseData.message);
-                    window.location.replace(loginPageUrl);
-
-                }else {
-                    // when signup fails
-                    signupErrorArea.innerText = response.responseData.message;
-                    signupErrorArea.style.display = 'block';
-                }
-            })
-    }
-    signupJSON(signup_request);
-    form.reset()
-});
+	}).then((res) => {
+        status = res.status;
+        return res.json();
+    })
+    .then((data) => {
+        if (status == 201 ){
+            window.location = 'index.html';
+            error.style.display='none';
+            success.style.display= 'block';
+        }
+    })
+}
