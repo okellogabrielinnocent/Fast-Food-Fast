@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Fast Food Fast</title>
-    <link rel="stylesheet" type="text/css" href="../UI/css/styles.css" />
-    <link rel="icon" href="../UI/images/favicon-16x16.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="icon" href="images/favicon-16x16.png" type="image/gif" sizes="16x16">
 </head>
 
-<body>
+<body onload="loadMenu()">
     <div class="topnav">
         <div class="topnav-list">
             <ul>
@@ -23,53 +23,15 @@
 
     <div class="main">
         <div class='item-grid-container'>
-            <!-- Item card div -->
-            <div class='item-grid' id="menu">
+            <div class='item-grid'>
                 <div class='item-grid-item first-item'>
-                        <div class="card">
-                            <img src="../UI/images/image.webp" alt="image" width="100%">
-                            <p>Price: 10,000</p> 
-                            <p><a href="history.html"><button>Order</button></a></p>
-                        </div>
-                </div>
-                <div class='item-grid-item'>
-                        <div class="card">
-                                <img src="../UI/images/image.webp" alt="image" width="100%">
-                                <p>Price: 10,000</p>
-                                <p><a href="history.html"><button>Order</button></a></p>
-                        </div>
-                </div>
-                <div class='item-grid-item'>
-                        <div class="card">
-                                <img src="../UI/images/image.webp" alt="image" width="100%">
-                                <p>Price: 10,000</p> 
-                                <p><a href="history.html"><button>Order</button></a></p>
-                        </div>
-                </div>
-                <div class='item-grid-item '>
-                    <div class="card">
-                            <img src="../UI/images/image.webp" alt="image" width="100%" width="720">
-                            <p>Price: 10,000</p>
-                            <p><a href="history.html"><button>Order</button></a></p>
-                    </div>
-                </div>
-                <div class='item-grid-item '>
-                        <div class="card">
-                                <img src="../UI/images/image.webp" alt="image" width="100%" width="720">
-                                <p>Price: 10,000</p>
-                                <p><a href="history.html"><button>Order</button></a></p>
-                        </div>
-                    </div>
-                <div class='item-grid-item last-item' >
-                    <div class="card">
-                            <img src="../UI/images/image.webp" alt="image" width="100%">
-                            <p>Price: 10,000</p>
-                            <p><a href="history.html"><button>Order</button></a></p>
+                    <div class="card" id="avialable_menu">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="js/getMenu.js"></script>
 </body>
 
 </html>
