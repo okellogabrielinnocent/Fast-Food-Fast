@@ -10,95 +10,22 @@
     <link rel="icon" href="images/favicon-16x16.png" type="image/gif" sizes="16x16">
 </head>
 
-<body>
+<body onload="getAllOrders()">
     <div class="topnav">
         <div class="topnav-list">
             <ul>
                 <li><a href="admin.html"> Home</a></li>
                 <li><a href="addItem.html"> Add Order</a></li>
                 <li><a href="addedlist.html"> Order List</a></li>
-                <li><a href="login.html"> Logout</a></li>
+                <li><a href="index.html" onclick="logout()" >Log out</a></li>
             </ul>
         </div>
     </div>
 
-    <div class="main">
-        <div class="table">
-                
-            <h3>Orders</h3>
-                <table>
-                    <tr>
-                        <th class="narrow">Order Number</th>
-                        <th>Details</th>
-                        <th class="narrow">Amount Due (Ksh)</th>
-                        <th>Actions</th> 
-                        <th>Order Status</th>
-                    </tr>
-                    <tr>
-                        <td>01</td>
-                        <td> 3 Burgers, 1 Coffee</td>
-                        <td>500</td>                             
-                        <td>
-                            <a href="admin.html"><button class="complete order-button">Complete </button></a>
-                            <a href="admin.html"><button class="decline order-button">Decline </button></a>                                 
-                        </td>
-                        <td>Pending</td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td>4 Chickens, 1 French Fries</td>
-                        <td>700</td>
-                        <td>
-                            <a href="admin.html"><button class="undo order-button">Undo</button></a>
-                        </td> 
-                        <td>Completed</td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td>4 Hotdogs, 3 Coffees</td>
-                        <td>1250</td> 
-                        <td>
-                            <a href="admin.html"><button class="complete order-button">Complete </button></a>
-                            <a href="admin.html"><button class="decline order-button">Decline </button></a>
-                             
-                        </td>
-                        <td>Pending</td>                        
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td>1 Coffee, 1 Burger</td>
-                        <td>400</td>                            
-                        <td>
-                            <a href="admin.html"><button class="accept order-button">Accept </button></a>
-                            <a href="admin.html"><button class="decline order-button">Decline </button></a>
-                             
-                        </td>
-                        <td>Incoming</td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td>1 Coffee, 1 Burger</td>
-                        <td>400</td>
-                        <td>
-                            <a href="admin.html"><button class="undo order-button">Undo</button></a>
-                        </td> 
-                        <td>Completed</td>
-                        
-                    </tr>
-                    <tr>
-                        <td>06</td>
-                        <td>3 Coffee, 1 Hotdog</td>
-                        <td>500</td>                            
-                        <td>
-                            <a href="admin.html"><button class="accept order-button">Accept </button></a>
-                            <a href="admin.html"><button class="decline order-button">Decline </button></a>
-                                
-                        </td>
-                        <td>Incoming</td>
-                    </tr>
-                </table>
-        </div>
+    <div class="main" >
+        <div class="table" id="user_orders"></div>
     </div>
+    <script src="js/getAllOrders.js"></script>
 </body>
 
 </html>
