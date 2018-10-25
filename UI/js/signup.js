@@ -23,7 +23,8 @@ function userSignup(event){
                 email:email
                
         })
-	}).then((res) => {
+    })
+    .then((res) => {
         status = res.status;
         return res.json();
     })

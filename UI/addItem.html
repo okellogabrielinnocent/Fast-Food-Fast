@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Fast Food Fast</title>
-    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
-    <link rel="icon" href="../images/favicon-16x16.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="icon" href="images/favicon-16x16.png" type="image/gif" sizes="16x16">
 </head>
 
 <body>
@@ -17,7 +17,7 @@
                 <li><a href="admin.html"> Home</a></li>
                 <li><a href="addItem.html"> Add Order</a></li>
                 <li><a href="addedlist.html"> Order List</a></li>
-                <li><a href="login.html"> Logout</a></li>
+                <li><a href="index.html" onclick="logout()" >Log out</a></li>
             </ul>
         </div>
     </div>
@@ -27,21 +27,17 @@
                     <div id="title">
                         <h3>Fast Food Fast</h3>
                     </div>
-                    <form action="addedlist.html">
+                    <form id="addItem" >
                         <label>Description:</label>
-                        <input type="text" placeholder="Description"required>
+                        <input type="text" id="description" placeholder="Description"required>
                         <label>Price:</label>
-                        <input type="text" placeholder="$" required>
-                        <label>Quantity:</label>
-                        <input type="text" placeholder="$" required>
-                        <label>Image:</label>
-                        <input type="file" required>
+                        <input type="text" id="price" placeholder="Ug Shs" required>
                         <input class="form-submit" type="submit">
                     </form>
                     
             </div>
         </div>
     </div>
-<script src="#"></script>
+<script src="js/addMenuItem.js"></script>
 </body>
 </html>

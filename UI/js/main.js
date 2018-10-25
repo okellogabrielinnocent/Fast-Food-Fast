@@ -1,9 +1,8 @@
 /**
  * Created by Okello Gabriel Innocent
  */
-
 export let loginPageUrl = "index.html";
-export let menuItemsUrl = "UI/home.html";
+export let menuItemsUrl = "home.html";
 export let hostAndPortUrl = "http://127.0.0.1:5000";
 
 
@@ -13,19 +12,15 @@ export function getToken() {
 }
 
 export function getFromCurrentUserName() {
-    return localStorage.getItem('username')
+    return localStorage.getItem('username');
 }
 export function getCurrentUserEmail() {
-    return localStorage.getItem('email')
+    return localStorage.getItem('email');
 }
 export function getFromCurrentUserid() {
-    return localStorage.getItem('userid')
+    return localStorage.getItem('userid');
 }
-export function logoutUser() {
-    // logout the current user by learing token info
-    localStorage.clear();
-    window.location.replace(loginPageUrl)
-}
+
 
 // Also include the URL to where the page should be redirected
 function fetchCurrentUserInfo(pathToResource, RedirectUrlParameter) {
@@ -50,7 +45,7 @@ export function getUserInfo(RedirectUrlParameter) {
         const userInfoUrl = hostAndPortUrl+"/API/v1/auth/login";
 
         let header = new Headers({"Content-Type": "application/json",
-                                  "Authorization": getTokenFromVerifyUser()});
+                                  "Authorization": getToken()});
 
         
         let option = {

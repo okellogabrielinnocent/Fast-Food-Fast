@@ -10,7 +10,7 @@
     <link rel="icon" href="images/favicon-16x16.png" type="image/gif" sizes="16x16">
 </head>
 
-<body>
+<body onload="getUserOrderHistory()">
     <div class="topnav">
         <div class="topnav-list">
             <ul>
@@ -23,164 +23,10 @@
     
     <div class="main-list">
             <div class="order-card">
-                <div class="order-user">
-                    <div class="description">
-                      <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                    </div>
-                </div>
-              <div class="order-content">
-                <div class="title">Fast Food - <span class="price">11,500 UGX</span> </div>
-                <div class="description">
-                  All served with meat.
-                </div>
-              </div>
-              <div class="pend-button">
-                  <a href="history.html" class="button">Pending..</a>
-              </div>
+              <div id="user_orders"></div>               
             </div>
-                             
-            <div class="order-card">
-                <div class="order-user">
-                    <div class="description">
-                      <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                    </div>
-                </div>
-              <div class="order-content">
-                <div class="title">Sea Food - <span class="price">15,000 UGX</span> </div>
-                <div class="description">
-                 Fish all served with lemon and juice.
-                </div>
-              </div>
-              <div class="accept-button">
-                  <a href="history.html" class="button">Accepted</a>
-                </div>
-                
-            </div>
-      
-            <div class="order-card">
-                <div class="order-user">
-                    <div class="description">
-                      <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                    </div>
-                </div>
-              <div class="order-content">
-                <div class="title">Fast Food - <span class="price">11,500 UGX</span> </div>
-                <div class="description">
-                  All served with meat.
-                </div>
-              </div>
-              <div class="accept-button">
-                  <a href="history.html" class="button">Accepted</a>
-                </div>
-                
-            </div>
-            <div class="order-card">
-                <div class="order-user">
-                    <div class="description">
-                      <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                    </div>
-                </div>
-                <div class="order-content">
-                  <div class="title">Sea Food - <span class="price">15,000 UGX</span> </div>
-                  <div class="description">
-                   Fish all served with lemon and juice.
-                  </div>
-                </div>
-                <div class="accept-button">
-                  <a href="history.html" class="button">Accepted</a>
-                </div>
-                
-              </div>
-        
-              <div class="order-card">
-                  <div class="order-user">
-                      <div class="description">
-                        <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                      </div>
-                  </div>
-                <div class="order-content">
-                  <div class="title">Fast Food - <span class="price">11,500 UGX</span> </div>
-                  <div class="description">
-                    All served with meat.
-                  </div>
-                </div>
-                <div class="accept-button">
-                    <a href="history.html" class="button">Accepted</a>
-                  </div>
-                  
-              </div>
-              <div class="order-card">
-                  <div class="order-user">
-                      <div class="description">
-                        <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                      </div>
-                  </div>
-                  <div class="order-content">
-                    <div class="title">Sea Food - <span class="price">15,000 UGX</span> </div>
-                    <div class="description">
-                     Fish all served with lemon and juice.
-                    </div>
-                  </div>
-                  <div class="decline-button">
-                      <a href="history.html" class="button">Declined</a>
-                    </div>
-                    
-                    
-                </div>
-          
-                <div class="order-card">
-                    <div class="order-user">
-                        <div class="description">
-                          <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                        </div>
-                    </div>
-                  <div class="order-content">
-                    <div class="title">Fast Food - <span class="price">11,500 UGX</span> </div>
-                    <div class="description">
-                      All served with meat.
-                    </div>
-                  </div>
-                  <div class="accept-button">
-                      <a href="history.html" class="button">Accepted</a>
-                  </div>
-                </div>
-
-                <div class="order-card">
-                    <div class="order-user">
-                        <div class="description">
-                          <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                        </div>
-                    </div>
-                    <div class="order-content">
-                      <div class="title">Sea Food - <span class="price">15,000 UGX</span> </div>
-                      <div class="description">
-                       Fish all served with lemon and juice.
-                      </div>
-                    </div>
-                    <div class="decline-button">
-                        <a href="history.html" class="button">Declined</a>
-                      </div>
-                      
-                      
-                  </div>
-            
-                  <div class="order-card">
-                      <div class="order-user">
-                          <div class="description">
-                            <p>Order Date: 13-09-2018 14:09:54 By: Innocent</small></p>
-                          </div>
-                      </div>
-                    <div class="order-content">
-                      <div class="title">Fast Food - <span class="price">11,500 UGX</span> </div>
-                      <div class="description">
-                        All served with meat.
-                      </div>
-                    </div>
-                    <div class="accept-button">
-                        <a href="history.html" class="button">Accepted</a>
-                      </div>
-                  </div>
     </div>
+    <script src="js/getOrderHistory.js"></script>
 </body>
 
 </html>

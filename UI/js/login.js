@@ -8,7 +8,7 @@ function loginUser(event){
 
     let email = document.getElementById('email').value;
     let passWord = document.getElementById('userPass').value;
-
+    // Let pass in the route to fetch from
     fetch(`http://127.0.0.1:5000/API/v1/auth/login`, {
         method: 'POST',
         headers: {

@@ -53,13 +53,12 @@ body{
 
 /*Login form*/
 .login{
-    margin-left: 1%;
-    border: solid thin #576574;
-    margin-top: 1px;
-    background-color:white;
-    width  : 640px;
-    height : 650px;
-    margin : 0 auto;
+    width: 60%;
+    height : 450px;
+    border-radius: 5px;
+    margin-top: 30px;
+    background-color: white;
+    margin-left: 20%;
 }
 
 /*Accept button*/
@@ -126,8 +125,12 @@ form{
       flex: 2;
   }
   .order-user {
-    flex: 1;
+    flex: 3;
   }
+  .quantity {
+    padding: 2px;
+    flex: 1;
+}
   
 .order-button {
     display: flex;
@@ -253,6 +256,7 @@ input:focus {
     max-width: 300px;
     margin: auto;
     text-align: center;
+    box-shadow: #576574;
 }
 
 .title {
@@ -294,7 +298,7 @@ input[type=submit]{
     height: 50%;
     width: 30%;
     padding: 10px 15px;
-    margin-left: 30%;
+    margin-left: 40%;
     margin-bottom: 10%;
     background-color: #2e86de;
     color: white;
@@ -317,11 +321,12 @@ label{
     }
 
 .login{
-        width: 80%;
-        height: auto;
-        margin-top: 5px;
-        background-color: white;
-        margin-left: 10%;
+    width: 100%;
+    height: auto;
+    border: solid thin rgb(158, 85, 16);
+    margin-top: 5px;
+    background-color: white;
+    margin-left: 1%;
     }
 .main{
     flex-direction: column;
@@ -379,7 +384,7 @@ label{
 
 
 .login{
-        width: 60%;
+        width: 70%;
         height: auto;
         border: solid thin lightgreen;
         margin-top: 5px;
@@ -415,7 +420,7 @@ label{
 
 .login{
       
-    width:60%;
+    width:70%;
     height: auto;
     border: solid thin lightgreen;
     margin-top: 5px;
