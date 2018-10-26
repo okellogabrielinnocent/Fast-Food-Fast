@@ -8,6 +8,7 @@ function loginUser(event){
 
     let email = document.getElementById('email').value;
     let passWord = document.getElementById('userPass').value;
+    let error = document.getElementById('error');
     // Let pass in the route to fetch from
     fetch(`http://127.0.0.1:5000/API/v1/auth/login`, {
         method: 'POST',
@@ -25,6 +26,10 @@ function loginUser(event){
         return res.json();
     })
     .then((data) => {
+        if (status >= 404){
+            error.style.display='block';
+            document.getElementById('error').innerHTML = data["Message"];
+        }
         if (status == 200 ){
             window.localStorage.setItem('Token', data.Token);
             if(email=='okellogabrielinnocent@gmail.com'){

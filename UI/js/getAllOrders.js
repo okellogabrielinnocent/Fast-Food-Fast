@@ -16,7 +16,8 @@ function getAllOrders() {
     })
     .then(data=>{
         // console.log(data);
-        let orders = data['Orders'];
+        let orders = data.Orders;
+        // Pass ui in template literal
         let htmlInfo = ` 
         <h3>Orders</h3>
         <table>
@@ -42,8 +43,8 @@ function getAllOrders() {
             <td>${element.price}</td>            
             <td>${element.order_date}</td>                             
             <td>
-                <a href="admin.html"><button class="complete order-button">Complete </button></a>
-                <a href="admin.html"><button class="decline order-button">Decline </button></a>                                 
+                <button class="complete order-button" onClick="completeOrder(${element.orderid})">Complete </button>
+                <button class="decline order-button" onClick="declineOrder(${element.orderid})">Decline </button>                                
             </td>
         </tr>
         `;  
@@ -52,4 +53,52 @@ function getAllOrders() {
         document.getElementById('user_orders').innerHTML = htmlInfo;
     
       });
+}
+// function to mark order as complete
+function completeOrder(orderid){
+    let status = ''
+    fetch(`http://127.0.0.1:5000/API/v1/orders/${orderid}`,{
+        method: 'PUT',
+        headers: {
+            'Content-type':'application/json',
+            "Authorization": "Bearer "+ user_userid
+        },
+        body:JSON.stringify(
+            {   
+                orderid:orderid,
+                order_status:'COMPLETE'
+        })
+    }).then((res)=>{
+        status = res.status;
+        return res.json()
+    }).then((data)=>{
+        if(status==200){
+            alert('Do you want to Accept this order');
+            location.reload();
+        }
+    });
+}
+// Function to decline order
+function declineOrder(orderid){
+    let status = ''
+    fetch(`http://127.0.0.1:5000/API/v1/orders/${orderid}`,{
+        method: 'PUT',
+        headers: {
+            'Content-type':'application/json',
+            "Authorization": "Bearer "+ user_userid
+        },
+        body:JSON.stringify(
+            {   
+                orderid:orderid,
+                order_status:'DECLINED'
+        })
+    }).then((res)=>{
+        status = res.status;
+        return res.json()
+    }).then((data)=>{
+        if(status==200){
+            alert('Do you want to Dcline this order');
+            location.reload();
+        }
+    });
 }

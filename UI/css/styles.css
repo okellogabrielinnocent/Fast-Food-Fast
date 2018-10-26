@@ -58,7 +58,11 @@ body{
     border-radius: 5px;
     margin-top: 30px;
     background-color: white;
+    
     margin-left: 20%;
+    -webkit-box-shadow: -1px 1px 15px 2px rgba(89,82,89,0.75);
+    -moz-box-shadow: -1px 1px 15px 2px rgba(89,82,89,0.75);
+    box-shadow: -1px 1px 15px 2px rgba(89,82,89,0.75);
 }
 
 /*Accept button*/
@@ -291,6 +295,37 @@ button:hover, a:hover {
     margin-left: 10%;
     margin-bottom: 5px;
     color: black;
+}
+#error {
+    font-family:Inconsolata;
+    color: #d32f2f;
+    padding: 10px;
+    margin-left: 35%;
+    font-size: 16px;
+    background: #f1e2e2;
+    border-radius: 3px;
+    display: none;
+    width: fit-content;
+    animation-name:error;
+    animation-iteration-count:2;
+    animation-duration: 300;
+    text-align: center;
+}
+
+#success {
+    font-family:Inconsolata;
+    color: #23ca8a;
+    padding: 10px;
+    margin-left: 35%;
+    font-size: 16px;
+    background: #f1e2e2;
+    border-radius: 3px;
+    display: none;
+    width: fit-content;
+    animation-name:success;
+    animation-iteration-count:2;
+    animation-duration: 300;
+    text-align: center;
 }
 
 /*Add style to the submit button*/
