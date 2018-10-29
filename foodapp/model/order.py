@@ -76,6 +76,22 @@ class Orders(Database):
             return True
         else:
             False
+
+    
+    def get_item_info(self, itemid):
+        """ Gets the info of the item with the item_id provided"""
+        cur = self.con.cursor()
+        sql = "SELECT description, price" \
+              "FROM food_item WHERE itemid= %s" % itemid
+
+        cur.execute(sql)
+        result = cur.fetchall()
+
+        item = {}  # holds item information 
+        for item_info in result:
+            item['description'] = item_info[0]
+            item['price'] = item_info[1]
+        return item
     
     def get_order_list(self):
         
@@ -89,14 +105,14 @@ class Orders(Database):
         
         for order in result:
             order_info = {}
+            itemid = order[4]
+            item_info = self.get_item_info(itemid)
             order_info['orderid'] = order[0]
             order_info['order_status'] = order[1]
             order_info['order_date'] = order[2]
             order_info['user_userid'] = order[3]
-            order_info['food_item_itemid'] = order[4]
+            # order_info['food_item_itemid'] = order[4]
             order_info['quantity'] = order[5]
-            
-
             order_list.append(order_info)
         return order_list
 

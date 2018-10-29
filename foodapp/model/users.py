@@ -14,18 +14,18 @@ class User(Database):
         Database.__init__(self)
 
     def sign_up(self, username, password, address,
-                email, admin):
+                email):
         """method for creating a user"""
         
         cur = self.con.cursor()
         cur.execute("""INSERT INTO users(username, password, address,
-                    email, admin)VALUES (%s, %s, %s, %s, False)""",
+                    email)VALUES (%s, %s, %s, %s)""",
                     (username, password, address,
                     email))
         self.con.commit()
 
     def validate_user_duplicate(self,username, password, address,
-                email, admin):
+                email):
                 cur = self.con.cursor()
                 cur.execute("""SELECT username FROM Users where
                             email =%s """, (email, ))
@@ -47,13 +47,13 @@ class User(Database):
                 else:
                     False
                     
-    def user_login(self, username, password):
+    def user_login(self, email, password):
         """method for loging in a user"""
         # try:
         #     response = ""
         #     cur = self.con.cursor()
-        #     cur.execute("""SELECT * FROM  Users where username = %s AND
-        #                 password = %s""", (username, password))
+        #     cur.execute("""SELECT * FROM  Users where email = %s AND
+        #                 password = %s""", (email, password))
         #     self.con.commit()
         #     count = cur.rowcount
         #     data = cur.fetchone()
@@ -79,9 +79,9 @@ class User(Database):
         #     return False
 
         response = ''
-        query = '''SELECT * FROM users WHERE username = %s AND password = %s'''
+        query = '''SELECT * FROM users WHERE email = %s AND password = %s'''
         cur = self.con.cursor()
-        cur.execute(query, (username, password))
+        cur.execute(query, (email, password))
         user_count = cur.rowcount
         data = cur.fetchone()
         if user_count > 0:

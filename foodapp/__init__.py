@@ -1,10 +1,12 @@
 from flask import Flask, jsonify
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 # from flasgger import Swagger
 
 App = Flask(__name__)
 App.config['JWT_SECRET_KEY'] = 'innocorp'
 jwt = JWTManager(App)
+cors = CORS(App, resources={r"/API/*": {"origins": "*"}})
 # Swagger(App)
 '''JWT MAnager
 An object used to hold JWT settings and callback functions

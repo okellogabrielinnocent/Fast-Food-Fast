@@ -28,10 +28,6 @@ def create_user():
         password = request.json['password'].strip()
         address = request.json['address'].strip()
         email = request.json['email'].strip()
-        admin = request.json['admin']
-        
-        
-        print("===data==",username,email,admin,address,password)
 
         if not re.search("^{\\s|\\S}*{\\S}+{\\s|\\S}*$", username):
             return jsonify({"message":"Username can not be empty"}), 400
@@ -39,10 +35,10 @@ def create_user():
             return jsonify({"message":"Username can not numbers"}), 400
         
         if users.validate_user_duplicate(username, password, address,
-                email, admin) is True:
+                email) is True:
                 return jsonify({"message": "Email is already existing"}), 409
 
-        users.sign_up(username, password, address, email, admin)
+        users.sign_up(username, password, address, email)
         return jsonify({"message": "User registered successfuly"}), 201
 
     except Exception as err:
@@ -55,9 +51,9 @@ def login():
         data = request.get_json()
         if not data:
             return jsonify({'Message': 'Data passed should be in JSON format!'}), 400
-        username = data['username']
+        email = data['email']
         password = data['password']
-        access_token = users.user_login(username, password)
+        access_token = users.user_login(email, password)
         if access_token is not None:
             return jsonify({"Message": "Login successful",
                                     "Token": access_token})
@@ -141,6 +137,8 @@ def get_orders():
     try:
         token_owner = get_jwt_identity()
         result = orders.get_order_list()
+        if len(result)==0:
+            return jsonify({'message': 'Your order history is empty. Please make orders!'}), 404
         return jsonify({"Orders": result}), 200
 
     except Exception as err:
