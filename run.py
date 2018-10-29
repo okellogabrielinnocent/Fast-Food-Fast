@@ -1,4 +1,4 @@
-from app import App
+from foodapp import App
 
 if __name__ == '__main__':
     """calls flask App object

@@ -1,8 +1,8 @@
 """Database config file"""
 from datetime import date
 import psycopg2
-from app import App
-from app.model import tables
+from foodapp import App
+from foodapp.model import tables
 
 
 class Database:

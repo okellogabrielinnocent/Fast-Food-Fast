@@ -10,7 +10,7 @@ jwt = JWTManager(App)
 An object used to hold JWT settings and callback functions
 for the Flask-JWT-Extended extension.'''
 
-from app.api.api import ROUTES
+from foodapp.api.api import ROUTES
 App.register_blueprint(ROUTES)
 
 

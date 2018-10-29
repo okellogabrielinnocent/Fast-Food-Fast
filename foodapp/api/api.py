@@ -2,9 +2,9 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import (jwt_required, get_jwt_identity,
 create_access_token,get_jwt_claims)
-from app.model.order import Orders
-from app.model.users import User
-from app.model.validation import Validations
+from foodapp.model.order import Orders
+from foodapp.model.users import User
+from foodapp.model.validation import Validations
 from datetime import datetime
 # from flasgger import Swagger, swag_from
 import re

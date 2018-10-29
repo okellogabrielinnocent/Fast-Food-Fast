@@ -1,4 +1,4 @@
-from app.tests.test_base import TestBase
+from foodapp.tests.test_base import TestBase
         
 class TestOrders(TestBase):
                 

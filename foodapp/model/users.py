@@ -2,7 +2,7 @@
 import datetime
 from flask import jsonify
 from flask_jwt_extended import create_access_token
-from app.database import Database
+from foodapp.database import Database
 
 connect = Database()
 

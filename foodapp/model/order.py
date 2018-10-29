@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from flask import jsonify
-from app.database import Database
+from foodapp.database import Database
 connect = Database()
 
 class Orders(Database):

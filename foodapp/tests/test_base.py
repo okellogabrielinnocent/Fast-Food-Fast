@@ -1,9 +1,9 @@
 import unittest
 import json
 from flask_jwt_extended import create_access_token
-from app import App
+from foodapp import App
 import psycopg2
-from app.database import Database
+from foodapp.database import Database
 
 class TestBase(unittest.TestCase):
     App.app_context().push()
