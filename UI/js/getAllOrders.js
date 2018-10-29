@@ -66,7 +66,7 @@ function completeOrder(orderid){
         body:JSON.stringify(
             {   
                 orderid:orderid,
-                order_status:'COMPLETE'
+                order_status:'Complete'
         })
     }).then((res)=>{
         status = res.status;
@@ -90,7 +90,7 @@ function declineOrder(orderid){
         body:JSON.stringify(
             {   
                 orderid:orderid,
-                order_status:'DECLINED'
+                order_status:'Cancelled'
         })
     }).then((res)=>{
         status = res.status;

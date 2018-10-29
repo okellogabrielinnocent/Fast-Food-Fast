@@ -3,6 +3,7 @@
 document.getElementById('addItem').addEventListener('submit', addItem)
 
 let user_userid = localStorage.getItem('Token');
+let error = document.getElementById('error');
 
 function addItem(event){
 	event.preventDefault();
@@ -28,6 +29,10 @@ function addItem(event){
         return response.json();
     })
     .then((data) => {
+        if (status >= 404){
+            error.style.display='block';
+            document.getElementById('error').innerHTML = data["message"];
+        }
         if (status == 201 ){
             window.location = 'addItem.html';
             error.style.display='none';
