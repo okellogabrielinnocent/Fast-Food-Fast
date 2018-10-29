@@ -25,7 +25,7 @@ class Database:
             self.con.commit()
         else:
             self.con = psycopg2.connect(host="ec2-23-21-171-249.compute-1.amazonaws.com", user="txulbvjcwlqbtl",
-                                        password="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e", dbname="test_db")
+                                        password="9c025a0dae4d90c9f64c3dbb94a83298229cdc6227dffac4525cee38600aa35e", dbname="d1c60svhtc6rcr")
             self.con.autocommit = True
             cur = self.con.cursor()
             cur.execute(tables.USER,)
