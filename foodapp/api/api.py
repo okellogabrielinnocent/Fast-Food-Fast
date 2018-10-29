@@ -182,7 +182,9 @@ def get_order_by_id(orderid):
 @jwt_required
 def update_orders(orderid):
     token_owner = get_jwt_identity()
-    # if token_owner['admin'] == True:
+    # if token_owner['email'] != "okellogabrielinnocent@gmail":
+    #     return jsonify({'message':'Only admin is allowed to update order'})
+    
     try:
         data = request.get_json()
         if not data:
@@ -190,8 +192,7 @@ def update_orders(orderid):
         else:
             valid_status = ['Accepted','Complete', 'Processing', 'Cancelled']            
             if data["order_status"] not in valid_status:
-                return ('Invalid status')
-
+                return jsonify({'message':'Invalid status'}),400
         status = data['order_status']
         result = orders.update_order(orderid, status)
         return jsonify({'Updated_order': result})

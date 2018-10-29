@@ -85,7 +85,7 @@ class Orders(Database):
               "FROM food_item WHERE itemid= %s" % itemid
 
         cur.execute(sql)
-        result = cur.fetchall()
+        result = cur.fetchone()
 
         item = {}  # holds item information 
         for item_info in result:
@@ -105,13 +105,13 @@ class Orders(Database):
         
         for order in result:
             order_info = {}
-            itemid = order[4]
-            item_info = self.get_item_info(itemid)
+            # itemid = order[4]
+            # item_info = self.get_item_info(itemid)
             order_info['orderid'] = order[0]
             order_info['order_status'] = order[1]
             order_info['order_date'] = order[2]
             order_info['user_userid'] = order[3]
-            # order_info['food_item_itemid'] = order[4]
+            order_info['food_item_itemid'] = order[4]
             order_info['quantity'] = order[5]
             order_list.append(order_info)
         return order_list

@@ -85,7 +85,8 @@ class User(Database):
         user_count = cur.rowcount
         data = cur.fetchone()
         if user_count > 0:
-            expires = datetime.timedelta(minutes=30)
+            # expires = datetime.timedelta(minutes=30)
+            expires = datetime.timedelta(days=1)
             user = dict(user_id=data[0], username=data[1],
                                     password=data[2], address=data[3],
                                     email=data[4], admin=data[5])
