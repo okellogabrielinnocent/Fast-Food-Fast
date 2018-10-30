@@ -3,17 +3,17 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 # from flasgger import Swagger
 
-App = Flask(__name__)
-App.config['JWT_SECRET_KEY'] = 'innocorp'
-jwt = JWTManager(App)
-cors = CORS(App, resources={r"/API/*": {"origins": "*"}})
+app = Flask(__name__)
+app.config['JWT_SECRET_KEY'] = 'innocorp'
+jwt = JWTManager(app)
+cors = CORS(app, resources={r"/API/*": {"origins": "*"}})
 # Swagger(App)
 '''JWT MAnager
 An object used to hold JWT settings and callback functions
 for the Flask-JWT-Extended extension.'''
 
 from foodapp.api.api import ROUTES
-App.register_blueprint(ROUTES)
+app.register_blueprint(ROUTES)
 
 
 @ROUTES.errorhandler(404)

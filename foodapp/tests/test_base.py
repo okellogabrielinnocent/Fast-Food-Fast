@@ -1,12 +1,12 @@
 import unittest
 import json
 from flask_jwt_extended import create_access_token
-from foodapp import App
+from foodapp import app
 import psycopg2
 from foodapp.database import Database
 
 class TestBase(unittest.TestCase):
-    App.app_context().push()
+    app.app_context().push()
     """class containing test cases for testing """
 
     """Test cases for user registration and user login"""
@@ -54,9 +54,9 @@ class TestBase(unittest.TestCase):
 
 
     def setUp(self):
-        App.config['TESTING'] = True
-        self.client = App.test_client()
-        with App.test_request_context():
+        app.config['TESTING'] = True
+        self.client = app.test_client()
+        with app.test_request_context():
             self.loggedin_user1 = dict(user_id=1, username='Gabriel',
                                       password='Gabriel', Admin='False')
             self.access_token = create_access_token(self.loggedin_user1)
