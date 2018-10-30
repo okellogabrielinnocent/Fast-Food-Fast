@@ -1,0 +1,13 @@
+[run]
+
+[report]
+omit = */app/__init__.py
+       *app/model/validation.py
+       app/api/__init__.py
+       app/model/__init__.py
+       app/tests/__init__.py 
+       app/tests/test_orders.py
+
+
+[html]
+directory = coverage_html

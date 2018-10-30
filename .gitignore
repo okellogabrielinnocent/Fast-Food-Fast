@@ -9,13 +9,4 @@ __pycache__
 htmlcov
 .pytest_cache
 coverage_html
-.coverage
-apiary
-.coveragerc
-.coveralls.yml
-.travis.yml
-apiary.apib
-config.py
-Procfile
-requirements.txt
-run.py
+
