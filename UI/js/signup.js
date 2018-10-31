@@ -11,7 +11,7 @@ function userSignup(event){
     let error = document.getElementById('error');
     let success = document.getElementById('success');
 	let status = '';
-	fetch(`http://127.0.0.1:5000/API/v1/auth/user/signup`, {
+	fetch(`https://foodiefast.herokuapp.com/API/v1/auth/user/signup`, {
 		method:'POST',
 		headers: {
             'Content-type':'application/json'

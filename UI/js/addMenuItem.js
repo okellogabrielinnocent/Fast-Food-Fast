@@ -11,7 +11,7 @@ function addItem(event){
     let price = document.getElementById('price').value;
     // let user_userid = localStorage.getItem('Token');
 	let status = '';
-	fetch(`http://127.0.0.1:5000/API/v1/menu`, {
+	fetch(`https://foodiefast.herokuapp.com/API/v1/menu`, {
 		method:'POST',
         headers:{"Content-Type": "application/json",
         "Authorization": "Bearer "+ user_userid

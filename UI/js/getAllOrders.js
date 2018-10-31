@@ -2,7 +2,7 @@ document.getElementById('user_orders').addEventListener('load', getAllOrders);
 let user_userid = localStorage.getItem('Token');
 
 function getAllOrders() {
-    fetch(`http://127.0.0.1:5000/API/v1/orders`, {
+    fetch(`https://foodiefast.herokuapp.com/API/v1/orders`, {
         method:'GET',
         // pass in the header so that one can ge the token
         headers:{'Accept': 'application/json, text/plain, */*',
@@ -57,7 +57,7 @@ function getAllOrders() {
 // function to mark order as complete
 function completeOrder(orderid){
     let status = ''
-    fetch(`http://127.0.0.1:5000/API/v1/orders/${orderid}`,{
+    fetch(`https://foodiefast.herokuapp.com/API/v1/orders/${orderid}`,{
         method: 'PUT',
         headers: {
             'Content-type':'application/json',
@@ -81,7 +81,7 @@ function completeOrder(orderid){
 // Function to decline order
 function declineOrder(orderid){
     let status = ''
-    fetch(`http://127.0.0.1:5000/API/v1/orders/${orderid}`,{
+    fetch(`https://foodiefast.herokuapp.com/API/v1/orders/${orderid}`,{
         method: 'PUT',
         headers: {
             'Content-type':'application/json',

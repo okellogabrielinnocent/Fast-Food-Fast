@@ -2,7 +2,7 @@ document.getElementById('avialable_menu').addEventListener('load', loadMenu);
 let user_userid = localStorage.getItem('Token');
 
 function loadMenu() {
-    fetch(`http://127.0.0.1:5000/API/v1/menu`, {
+    fetch(`https://foodiefast.herokuapp.com/API/v1/menu`, {
         method:'GET',
         // pass in the header so that one can ge the token
         headers:{'Accept': 'application/json, text/plain, */*',
@@ -43,7 +43,7 @@ function loadMenu() {
 function declineOrder(itemid){
     const quantity = prompt("Please add quantity", " ");
     let status = ''
-    fetch(`http://127.0.0.1:5000/API/v1/users/orders`,{
+    fetch(`https://foodiefast.herokuapp.com/API/v1/users/orders`,{
         method: 'POST',
         headers: {
             'Content-type':'application/json',

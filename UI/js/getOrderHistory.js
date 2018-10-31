@@ -2,7 +2,7 @@ document.getElementById('user_orders').addEventListener('load', getUserOrderHist
 let user_userid = localStorage.getItem('Token');
 
 function getUserOrderHistory() {
-    fetch(`http://127.0.0.1:5000/API/v1/orders`, {
+    fetch(`https://foodiefast.herokuapp.com/API/v1/orders`, {
         method:'GET',
         // pass in the header so that one can ge the token
         headers:{'Accept': 'application/json, text/plain, */*',
@@ -53,7 +53,7 @@ function getUserOrderHistory() {
 }
 
 function update(){
-    fetch(`http://127.0.0.1:5000/API/v1/orders/<orderid>`, {
+    fetch(`https://foodiefast.herokuapp.com/API/v1/orders/<orderid>`, {
         method:'PUT',
         // pass in the header so that one can ge the token
         headers:{'Accept': 'application/json, text/plain, */*',

@@ -10,7 +10,7 @@ function loginUser(event){
     let passWord = document.getElementById('userPass').value;
     let error = document.getElementById('error');
     // Let pass in the route to fetch from
-    fetch(`http://127.0.0.1:5000/API/v1/auth/login`, {
+    fetch(`https://foodiefast.herokuapp.com/API/v1/auth/login`, {
         method: 'POST',
         headers: {
             'Content-type':'application/json'
