@@ -1,6 +1,6 @@
 // Function for placing an order by user
 
-document.getElementById('placeOrder').addEventListener('click', placeOrder)
+document.getElementById('placeOrder').addEventListener('click', placeOrder);
 
 let user_userid = localStorage.getItem('Token');
 
@@ -30,5 +30,5 @@ function placeOrder(event){
             error.style.display='none';
             success.style.display= 'block';
         }
-    })
+    });
 }

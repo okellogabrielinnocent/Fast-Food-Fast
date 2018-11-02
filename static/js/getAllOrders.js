@@ -56,7 +56,7 @@ function getAllOrders() {
 }
 // function to mark order as complete
 function completeOrder(orderid){
-    let status = ''
+    let status = '';
     fetch(`https://foodiefast.herokuapp.com/API/v1/orders/${orderid}`,{
         method: 'PUT',
         headers: {
@@ -70,7 +70,7 @@ function completeOrder(orderid){
         })
     }).then((res)=>{
         status = res.status;
-        return res.json()
+        return res.json();
     }).then((data)=>{
         if(status==200){
             alert('Do you want to Accept this order');
@@ -80,7 +80,7 @@ function completeOrder(orderid){
 }
 // Function to decline order
 function declineOrder(orderid){
-    let status = ''
+    let status = '';
     fetch(`https://foodiefast.herokuapp.com/API/v1/orders/${orderid}`,{
         method: 'PUT',
         headers: {
@@ -94,7 +94,7 @@ function declineOrder(orderid){
         })
     }).then((res)=>{
         status = res.status;
-        return res.json()
+        return res.json();
     }).then((data)=>{
         if(status==200){
             alert('Do you want to Dcline this order');

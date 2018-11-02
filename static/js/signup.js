@@ -1,5 +1,5 @@
 // Function for signup
-document.getElementById('SignUpForm').addEventListener('submit', userSignup)
+document.getElementById('SignUpForm').addEventListener('submit', userSignup);
 
 
 function userSignup(event){
@@ -41,5 +41,5 @@ function userSignup(event){
             document.getElementById('success').innerHTML = data["message"];
 
         }
-    })
+    });
 }

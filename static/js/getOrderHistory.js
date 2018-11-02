@@ -64,6 +64,6 @@ function update(){
         // console.log(response);
         return response.json();
          
-    })
+    });
 
 }

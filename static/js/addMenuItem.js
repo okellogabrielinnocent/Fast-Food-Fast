@@ -1,6 +1,6 @@
 // Function for add item to menu by admin
 
-document.getElementById('addItem').addEventListener('submit', addItem)
+document.getElementById('addItem').addEventListener('submit', addItem);
 
 let user_userid = localStorage.getItem('Token');
 let error = document.getElementById('error');
@@ -41,5 +41,5 @@ function addItem(event){
     })
     .catch((err) => {
         console.log(err);
-    })
+    });
 }

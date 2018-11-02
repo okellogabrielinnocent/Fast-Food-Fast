@@ -40,7 +40,7 @@ function loginUser(event){
 
         }
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
 }
 function logout(){
     localStorage.removeItem('Token');

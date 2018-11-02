@@ -48,5 +48,5 @@ function loadMenu() {
       })
       .catch(function(error){
             console.log(error);
-        })
+        });
 }

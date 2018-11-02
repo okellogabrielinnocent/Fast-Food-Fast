@@ -22,5 +22,5 @@ function loadUserOrders() {
     })
     .catch(function(error){
          console.log(error);
-    })
+    });
 }

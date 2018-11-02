@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
     <title>Fast Food Fast</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="icon" href="images/favicon-16x16.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+    <link rel="icon" href="/static/images/favicon-16x16.png" type="image/gif" sizes="16x16">
 </head>
 
-<body onload="loadMenu()">
+<body onload="getAllOrders()">
     <div class="topnav">
         <div class="topnav-list">
             <ul>
@@ -22,11 +22,10 @@
         </div>
     </div>
 
-    <div class="main">
-        <div class="table" id="avialable_menu">
-        </div>
+    <div class="main" >
+        <div class="table" id="user_orders"></div>
     </div>
-    <script src="js/orderlist.js"></script>
+    <script src="/static/js/getAllOrders.js"></script>
 </body>
 
 </html>

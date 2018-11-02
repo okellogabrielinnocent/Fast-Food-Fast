@@ -23,7 +23,7 @@ function loadMenu() {
         // iterate through returned array by element and key
         menus.forEach((element,key) => {
         htmlInfo += `
-            <img src="images/image.webp" alt="image" width="100%">
+            <img src="/static/images/image.webp" alt="image" width="100%">
             <p>${element.description}</p>
             <p>shs${element.price}</p>
             <p><button onClick="declineOrder(${element.itemid})">Order</button></p>
@@ -36,13 +36,13 @@ function loadMenu() {
       })
       .catch(function(error){
             console.log(error);
-        })
+        });
 }
 // itemid
 
 function declineOrder(itemid){
     const quantity = prompt("Please add quantity", " ");
-    let status = ''
+    let status = '';
     fetch(`https://foodiefast.herokuapp.com/API/v1/users/orders`,{
         method: 'POST',
         headers: {
@@ -58,7 +58,7 @@ function declineOrder(itemid){
     })
     .then((res)=>{
         status = res.status;
-        return res.json()
+        return res.json();
     })
     .then((data) => {
         if (status == 201 ){
@@ -69,5 +69,5 @@ function declineOrder(itemid){
     })
     .catch((err) => {
         console.log(err);
-    })
+    });
 }
