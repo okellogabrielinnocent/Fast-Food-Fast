@@ -16,10 +16,10 @@ from foodapp.api.api import ROUTES
 app.register_blueprint(ROUTES)
 
 
-@ROUTES.errorhandler(404)
+@app.errorhandler(404)
 def page_not_found(error):
     return jsonify({"message":"The URL you have added is wrong"}), 404
 
-@ROUTES.errorhandler(405)
+@app.errorhandler(405)
 def method_not_allowed(error):
     return jsonify({"message":"The method used is not allowed"}), 405
