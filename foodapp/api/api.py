@@ -1,5 +1,5 @@
 """api views"""
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from flask_jwt_extended import (jwt_required, get_jwt_identity,
 create_access_token,get_jwt_claims)
 from foodapp.model.order import Orders
@@ -15,6 +15,40 @@ users = User()
 orders = Orders()
 validations = Validations
 
+'''Routes for rendering UI template'''
+@ROUTES.route('/', methods=['GET'])
+def index():
+   return render_template('index.html')
+
+
+@ROUTES.route('/index.html', methods=['GET'])
+def home():
+   return render_template('index.html')
+
+
+@ROUTES.route('/admin.html', methods=['GET'])
+def admin():
+   return render_template('admin.html')
+
+
+@ROUTES.route('/addItem.html', methods=['GET'])
+def addItem():
+   return render_template('addItem.html')
+
+
+@ROUTES.route('/addedlist.html', methods=['GET'])
+def addedlist():
+   return render_template('addedlist.html')
+
+
+@ROUTES.route('/history.html', methods=['GET'])
+def history():
+   return render_template('history.html')
+
+
+@ROUTES.route('/register.html', methods=['GET'])
+def register():
+   return render_template('register.html')
 
 @ROUTES.route('/API/v1/auth/user/signup', methods=['POST'])
 # @swag_from('../Docs/signup.yml')
