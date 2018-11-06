@@ -3,7 +3,7 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 # from flasgger import Swagger
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder ='../templates', static_folder='../satic')
 app.config['JWT_SECRET_KEY'] = 'innocorp'
 jwt = JWTManager(app)
 cors = CORS(app, resources={r"/API/*": {"origins": "*"}})

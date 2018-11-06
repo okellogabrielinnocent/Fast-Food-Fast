@@ -10,3 +10,14 @@ htmlcov
 .pytest_cache
 coverage_html
 
+foodapp/__init__.pyc
+foodapp/__init__.pyc
+foodapp/__init__.pyc
+foodapp/database.pyc
+foodapp/api/__init__.pyc
+foodapp/api/api.pyc
+foodapp/model/__init__.pyc
+foodapp/model/order.pyc
+foodapp/model/tables.pyc
+foodapp/model/users.pyc
+foodapp/model/validation.pyc
