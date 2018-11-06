@@ -18,7 +18,7 @@ app.register_blueprint(ROUTES)
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return jsonify({"message":"The URL you have added is wrong"}), 404
+    return jsonify({"message":"The URL you have added is wrong" } + error), 404
 
 @app.errorhandler(405)
 def method_not_allowed(error):
