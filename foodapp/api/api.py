@@ -26,6 +26,11 @@ def home():
    return render_template('index.html')
 
 
+@ROUTES.route('/home.html', methods=['GET'])
+def user_home():
+   return render_template('home.html')
+
+
 @ROUTES.route('/admin.html', methods=['GET'])
 def admin():
    return render_template('admin.html')
